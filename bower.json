@@ -1,0 +1,25 @@
+{
+  "name": "template-web",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ngbp/ngbp",
+  "authors": [
+    "Dan Vandachevici <dan.vandachevici@gmail.com>"
+  ],
+  "description": "A short boilerplate template for future projects",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "*",
+    "angular-ui-router": "*",
+    "bootstrap": "*",
+    "angular-cookies": "^1.5.8"
+  }
+}

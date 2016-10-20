@@ -1,0 +1,9 @@
+<form class="form" name="createListForm" ng-submit="createList()" novalidate>
+	<div class="large-input-container">
+		<input class="large-input" type="text" ng-model="createListInput" placeholder="Create new list"/>
+	</div>
+</form>
+
+<div class="list-container">
+	<list ng-repeat="listid in listarr" listid="listid"></list>
+</div>

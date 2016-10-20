@@ -1,0 +1,25 @@
+<div class="login-container">
+	<div class="title">
+		Please log in
+	</div>
+	<form class="form" name="loginForm" ng-submit="login()" novalidate>
+		<div class="form-group" ng-class='{"has-error": loginForm.email.$dirty && loginForm.email.$invalid}'>
+			<input type="email" required class="form-control center-text" name="email" placeholder="Email" ng-model="loginObj.email">
+			<span class="help-block" ng-show="loginForm.email.$dirty && loginForm.email.$error.required">Required</span>
+		</div>
+
+		<div class="form-group" ng-class='{"has-error": loginForm.password.$dirty && loginForm.password.$invalid}'>
+			<input type="password" required class="form-control center-text" name="password" placeholder="Password" ng-model="loginObj.pass">
+			<span class="help-block" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">Required</span>
+		</div>
+		<button class="btn btn-block btn-primary" type="submit" ng-disabled="!loginForm.$valid" ng-if="!loginLoading">Log in</button>
+		<button class="btn btn-block btn-primary" disabled ng-if="loginLoading"><span class="fa fa-spin fa-refresh"></span></button>
+	</form>
+	<span class="help-block" ng-show="errorOccurred">{{errorOccurred}}</span>
+
+	<div class="footer">
+		<span><a ui-sref="auth-signup">Signup</a></span>
+		|
+		<span><a ui-sref="list-home">Home</a></span>
+	</div>
+</div>

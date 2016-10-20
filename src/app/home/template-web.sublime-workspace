@@ -1,0 +1,1006 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Mon",
+				"MongoClient"
+			],
+			[
+				"Inspec",
+				"InspecterMessage"
+			],
+			[
+				"lg",
+				"lg-box-width"
+			],
+			[
+				"app",
+				"app_files"
+			],
+			[
+				"deb",
+				"debug"
+			],
+			[
+				"dist",
+				"dist_dir"
+			],
+			[
+				"debug",
+				"debug_dir"
+			],
+			[
+				"loca",
+				"locationProvider"
+			],
+			[
+				"explica",
+				"explicatieC"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/dan/workspace/template-web/src/app/app.js",
+			"settings":
+			{
+				"buffer_size": 761,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "home.js",
+			"settings":
+			{
+				"buffer_size": 398,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/dan/workspace/template-web/src/index.html",
+			"settings":
+			{
+				"buffer_size": 567,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "home.tpl.html",
+			"settings":
+			{
+				"buffer_size": 23,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 167.0,
+		"selected_items":
+		[
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"build",
+				"Set Syntax: NAnt Build File"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Add Repository"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"convert",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/dan/workspace/template-web",
+		"/Users/dan/workspace/template-web/debug",
+		"/Users/dan/workspace/template-web/debug/pub/scripts",
+		"/Users/dan/workspace/template-web/debug/pub/scripts/app",
+		"/Users/dan/workspace/template-web/src",
+		"/Users/dan/workspace/template-web/src/app/home"
+	],
+	"file_history":
+	[
+		"/Users/dan/workspace/template-web/src/index.html",
+		"/Users/dan/workspace/template-web/src/app/home/home.tpl.html",
+		"/Users/dan/workspace/template-web/src/app/home/home.js",
+		"/Users/dan/workspace/template-web/build.config.js",
+		"/Users/dan/workspace/template-web/Gruntfile.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/watch.js",
+		"/Users/dan/workspace/template-web/debug/pub/scripts/app/templates.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt/lib/grunt/template.js",
+		"/Users/dan/workspace/template-web/node_modules/karma/lib/temp_dir.js",
+		"/Users/dan/workspace/template-web/vendor/bootstrap/less/mixins/text-emphasis.less",
+		"/Users/dan/workspace/template-web/tools.md",
+		"/Users/dan/workspace/template-web/src/app/home/home.less",
+		"/Users/dan/workspace/template-web/debug/pub/scripts/app/home.js",
+		"/Users/dan/workspace/template-web/src/app/home/home.spec.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/html2js.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/copy.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/jshint.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt-conventional-changelog/node_modules/conventional-changelog/node_modules/event-stream/test/writeArray.asynct.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt-contrib-less/node_modules/less/lib/less/join-selector-visitor.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/sass.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt-contrib-coffee/node_modules/chalk/node_modules/.bin/strip-ansi",
+		"/Users/dan/workspace/template-web/vendor/bootstrap/less/scaffolding.less",
+		"/Users/dan/workspace/template-web/grunt-tasks/build_index.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/clean.js",
+		"/Users/dan/workspace/template-web/grunt-tasks/concat.js",
+		"/Users/dan/workspace/template-web/debug/pub/js/extern/jquery.min.js",
+		"/Users/dan/workspace/template-web/debug/pub/js/extern/angular.min.js",
+		"/Users/dan/workspace/template-web/node_modules/karma/static/debug.html",
+		"/Users/dan/workspace/template-web/debug/pub/js/extern/bootstrap.min.js",
+		"/Users/dan/workspace/template-web/debug/pub/js/extern/angular-ui-router.min.js",
+		"/Users/dan/workspace/template-web/debug/pub/js/extern/ui-bootstrap-tpls.min.js",
+		"/Users/dan/workspace/template-web/debug/pub/js/app/about.js",
+		"/Users/dan/workspace/template-web/debug/pub/index.html",
+		"/Users/dan/workspace/template-web/debug/pub/styles/bootstrap.min.css",
+		"/Users/dan/workspace/template-web/node_modules/karma/node_modules/connect/node_modules/debug/component.json",
+		"/Users/dan/workspace/template-web/release/pub/js/script.js",
+		"/Users/dan/workspace/template-web/vendor/angular/angular.min.js",
+		"/Users/dan/workspace/template-web/vendor/angular/angular.js",
+		"/Users/dan/workspace/template-web/src/app/app.js",
+		"/Users/dan/workspace/template-web/vendor/bootstrap/less/variables.less",
+		"/Users/dan/workspace/template-web/node_modules/coffeelint/node_modules/optimist/example/line_count_options.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt-html2js/test/html2js_test.js",
+		"/Users/dan/workspace/template-web/node_modules/karma/node_modules/log4js/lib/connect-logger.js",
+		"/Users/dan/workspace/template-web/CHANGELOG.md",
+		"/Users/dan/workspace/template-web/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js",
+		"/Users/dan/workspace/template-web/vendor/angular-ui-router/release/angular-ui-router.js",
+		"/Users/dan/workspace/template-web/node_modules/grunt-contrib-jshint/node_modules/jshint/bin/build",
+		"/Users/dan/workspace/inspecter/inspecterutils/index.js",
+		"/Users/dan/workspace/inspecter/control_tower/inspecter-control-tower.sublime-project",
+		"/Users/dan/workspace/inspecter/plane/plane.js",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/zmq/examples/dealer_router.js",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/mongodb/node_modules/bson/builderror.log",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/express/lib/router/route.js",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/zmq/examples/rep_req.js",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/express/Readme.md",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/express/lib/express.js",
+		"/Users/dan/workspace/inspecter/plane/lib/api.js",
+		"/Users/dan/workspace/inspecter/plane/lib/planeconfig.js",
+		"/Users/dan/workspace/inspecter/control_tower/testfile",
+		"/Users/dan/workspace/inspecter/control_tower/node_modules/zmq/build/config.gypi",
+		"/Users/dan/workspace/inspecter/control_tower/lib/towerconfig.js",
+		"/Users/dan/workspace/inspecter/control_tower/package.json",
+		"/Users/dan/workspace/inspecter/plane/node_modules/zmq/build/config.gypi",
+		"/Users/dan/workspace/inspecter/plane/node_modules/mongodb/CONTRIBUTING.md",
+		"/Users/dan/workspace/inspecter/plane/lib/errors.js",
+		"/Users/dan/workspace/inspecter/node_modules/InspecterMessage.js",
+		"/Users/dan/workspace/inspecter/node_modules/InspecterQueue.js",
+		"/Users/dan/workspace/inspecter/plane.js",
+		"/Users/dan/workspace/inspecter/node_modules/planeconfig.js",
+		"/Users/dan/workspace/inspecter/node_modules/api.js",
+		"/Users/dan/workspace/inspecter/control_tower.js",
+		"/Users/dan/workspace/inspecter/plane/node_modules/mongodb/node_modules/kerberos/lib/base64.c",
+		"/Users/dan/workspace/inspecter/plane/node_modules/mongodb/LICENSE",
+		"/Users/dan/workspace/inspecter/planeconfig.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-copy/tasks/copy.js",
+		"/Users/dan/workspace/thesite/.sass-cache/17c41a32206ba3fe9150ff733a1e35266855e60c/_variables.scssc",
+		"/Users/dan/workspace/thesite/bower_components/jquery/src/attributes/val.js",
+		"/Users/dan/workspace/thesite/bower_components/angular-ui-router/src/view.js",
+		"/Users/dan/workspace/thesite/src/app/home/_variables.scss",
+		"/Users/dan/workspace/thesite/src/index.html",
+		"/Users/dan/workspace/thesite/debug/index.html",
+		"/Users/dan/workspace/thesite/bower_components/jquery/src/deferred.js",
+		"/Users/dan/workspace/thesite/bower_components/jquery/src/data.js",
+		"/Users/dan/workspace/thesite/bower_components/jquery/src/css/var/getStyles.js",
+		"/Users/dan/workspace/thesite/.sass-cache/17c41a32206ba3fe9150ff733a1e35266855e60c/style.sassc",
+		"/Users/dan/workspace/thesite/node_modules/grunt/node_modules/findup-sync/test/findup-sync_test.js",
+		"/Users/dan/workspace/thesite/src/app/home/style.sass",
+		"/Users/dan/workspace/thesite/config.js",
+		"/Users/dan/workspace/thesite/bower_components/angular-ui-router/src/state.js",
+		"/Users/dan/workspace/thesite/bower_components/jquery/src/var/hasOwn.js",
+		"/Users/dan/workspace/thesite/src/app/app.js",
+		"/Users/dan/workspace/thesite/debug/js/thesite.min.js",
+		"/Users/dan/workspace/thesite/Gruntfile.js",
+		"/Users/dan/workspace/thesite/thesite.sublime-project",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/test/test-helper.js",
+		"/Users/dan/workspace/thesite/debug/js/templates.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/shelljs/src/toEnd.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-uglify/node_modules/uglify-js/test/compress/debugger.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-ng-annotate/node_modules/ng-annotate/build/es5/scope.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/debug/debug.js",
+		"/Users/dan/workspace/thesite/src/app/home/home.tpl.html",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-jshint/node_modules/jshint/bin/build",
+		"/Users/dan/workspace/thesite/node_modules/grunt/internal-tasks/bump.js",
+		"/Users/dan/workspace/thesite/bower.json",
+		"/Users/dan/workspace/thesite/node_modules/grunt-ng-annotate/node_modules/ng-annotate/BUILD.md",
+		"/Users/dan/workspace/thesite/src/app/controllers/p1ctrl.js",
+		"/Users/dan/workspace/thesite/src/app/partials/p1.tpl.html",
+		"/Users/dan/workspace/thesite/package.json",
+		"/Users/dan/workspace/thesite/node_modules/grunt/appveyor.yml",
+		"/Users/dan/workspace/thesite/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/action/append.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/argument_parser.js",
+		"/Users/dan/workspace/thesite/dist/agg.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-jshint/node_modules/jshint/data/non-ascii-identifier-start.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-cli/node_modules/resolve/index.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt/node_modules/findup-sync/node_modules/glob/test/readme-issue.js",
+		"/Users/dan/workspace/thesite/node_modules/grunt-contrib-jshint/node_modules/jshint/node_modules/htmlparser2/test/Documents/RDF_Example.xml",
+		"/Users/dan/workspace/thesite/bower_components/angular/README.md",
+		"/Users/dan/workspace/thesite/index.html",
+		"/Users/dan/workspace/webapp-familia/src/app/budget/dashboard/dashboard.js",
+		"/Users/dan/workspace/webapp-familia/build.config.js",
+		"/Users/dan/workspace/webapp-familia/src/app/budget/budget.tpl.html",
+		"/Users/dan/workspace/webapp-familia/src/app/app.js",
+		"/Users/dan/workspace/webapp-familia/src/app/budget/budget.js",
+		"/Users/dan/workspace/webapp-familia/vendor/angular-bootstrap/ui-bootstrap-tpls.js",
+		"/Users/dan/workspace/webapp-familia/vendor/angular-bootstrap/ui-bootstrap.js",
+		"/Users/dan/workspace/webapp-familia/vendor/angular-bootstrap/.bower.json",
+		"/Users/dan/workspace/webapp-familia/vendor/angular/angular-csp.css",
+		"/Users/dan/workspace/webapp-familia/vendor/angular/angular.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"home/home.tpl",
+			"watch",
+			"assets",
+			"/js",
+			",\n",
+			"js",
+			"debug_dir",
+			"},\n",
+			"uglify",
+			"coffeelint",
+			"ngmin",
+			"loglevels",
+			"errs",
+			"log",
+			"mongo",
+			"jobid",
+			"matches",
+			"sock",
+			"ams",
+			"stdio",
+			"request",
+			"opts",
+			"loglevels",
+			"collec",
+			"mongoCol",
+			"api",
+			"db",
+			"logtypes",
+			"log",
+			"control_tower",
+			"copy",
+			"dist",
+			"index",
+			"index:dist",
+			"sass",
+			"index",
+			"sass",
+			"html2js",
+			"concat",
+			"copy",
+			"concat",
+			"html2js",
+			"copy",
+			"html2",
+			"clean:",
+			"ngannotate",
+			"copy",
+			"jshint",
+			"livereload",
+			"jshint",
+			"sass",
+			"copy",
+			"concat",
+			"fff.js",
+			"fff",
+			"jshint",
+			"jshint.debug",
+			"concat",
+			"anno",
+			"tasks",
+			"watch",
+			"concat",
+			"thesite",
+			"beforeco",
+			"concat",
+			"dist/",
+			"extern.js",
+			"html2js",
+			"debug",
+			"watch",
+			"copy",
+			"watch",
+			"html2js",
+			"},\n",
+			"compile",
+			"build",
+			"compile_js",
+			"concat",
+			"build",
+			"default",
+			"tooltip",
+			"\">",
+			"te.name === \"budget\") {\n		// 	$state.go('budget.dashboard');\n		// }",
+			"jshint",
+			"fonts",
+			"compile_ass",
+			"copy",
+			"copy:",
+			"robots",
+			"username",
+			"changelog",
+			"delta",
+			"userc",
+			"delta",
+			"watch",
+			"username",
+			"adauga",
+			"active_form",
+			"insert",
+			"END",
+			"formCheltuieli",
+			"reset",
+			"init",
+			"show",
+			"Init",
+			"init",
+			"remote",
+			"http",
+			"data",
+			"modal title",
+			"modal",
+			"navbar-collapse-1",
+			"info",
+			"recess",
+			"getCook",
+			"getCoo",
+			"createC",
+			");\n",
+			"response",
+			"bootstrap.js",
+			"\n]",
+			"px",
+			"col-md-8",
+			"px",
+			"register",
+			"register_for_trial",
+			"create",
+			"getke"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/dan/workspace/template-web/src/app/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 761,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								222,
+								222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								397,
+								397
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/dan/workspace/template-web/src/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								542,
+								542
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "home.tpl.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 23,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "template-web.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"index",
+				"src/index.html"
+			],
+			[
+				"inde",
+				"src/index.html"
+			],
+			[
+				"app",
+				"src/app/app.js"
+			],
+			[
+				"build",
+				"build.config.js"
+			],
+			[
+				"templates",
+				"debug/pub/scripts/app/templates.js"
+			],
+			[
+				"watch",
+				"grunt-tasks/watch.js"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"home",
+				"src/app/home/home.js"
+			],
+			[
+				"homepl",
+				"src/app/home/home.tpl.html"
+			],
+			[
+				"jshi",
+				"grunt-tasks/jshint.js"
+			],
+			[
+				"copy",
+				"grunt-tasks/copy.js"
+			],
+			[
+				"sass",
+				"grunt-tasks/sass.js"
+			],
+			[
+				"debug/js/jq",
+				"debug/pub/js/extern/jquery.min.js"
+			],
+			[
+				"debug/js/extern",
+				"debug/pub/js/extern/angular.min.js"
+			],
+			[
+				"angularmin",
+				"vendor/angular/angular.min.js"
+			],
+			[
+				"angular",
+				"vendor/angular/angular.js"
+			],
+			[
+				"angular.min",
+				"vendor/angular/angular.min.js"
+			],
+			[
+				"build.",
+				"build.config.js"
+			],
+			[
+				"clean",
+				"grunt-tasks/clean.js"
+			],
+			[
+				"html2",
+				"grunt-tasks/html2js.js"
+			],
+			[
+				"bu",
+				"build.config.js"
+			],
+			[
+				"towercon",
+				"lib/towerconfig.js"
+			],
+			[
+				"config",
+				"node_modules/zmq/build/config.gypi"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"planecon",
+				"lib/planeconfig.js"
+			],
+			[
+				"planejs",
+				"plane.js"
+			],
+			[
+				"api",
+				"plane/lib/api.js"
+			],
+			[
+				"plane",
+				"plane.js"
+			],
+			[
+				"libapi",
+				"plane/lib/api.js"
+			],
+			[
+				"variascss",
+				"src/app/home/_variables.scss"
+			],
+			[
+				"debugindex",
+				"debug/index.html"
+			],
+			[
+				"debuginde",
+				"debug/index.html"
+			],
+			[
+				"conf",
+				"config.js"
+			],
+			[
+				"stylescss",
+				"src/app/home/style.scss"
+			],
+			[
+				"sty",
+				".sass-cache/17c41a32206ba3fe9150ff733a1e35266855e60c/style.sassc"
+			],
+			[
+				"stylesass",
+				"src/app/home/style.sass"
+			],
+			[
+				"thesite",
+				"debug/js/thesite.min.js"
+			],
+			[
+				"debuinde",
+				"debug/index.html"
+			],
+			[
+				"p1.pl",
+				"src/app/partials/p1.tpl.html"
+			],
+			[
+				"depl",
+				"deploy.pl"
+			],
+			[
+				"budgetpl",
+				"src/app/budget/budget.tpl.html"
+			],
+			[
+				"budget",
+				"build/src/app/budget/budget.js"
+			],
+			[
+				"vendor/angular-bootstrap/ui-boopls",
+				"vendor/angular-bootstrap/ui-bootstrap-tpls.js"
+			],
+			[
+				"old",
+				"old_budget_dashboard.tpl.html"
+			],
+			[
+				"dashpl",
+				"src/app/budget/dashboard/dashboard.tpl.html"
+			],
+			[
+				"bugetjs",
+				"src/app/budget/budget.js"
+			],
+			[
+				"dashjs",
+				"src/app/budget/dashboard/dashboard.js"
+			],
+			[
+				"budgepl",
+				"old_budget_dashboard.tpl.html"
+			],
+			[
+				"shoppingpl",
+				"src/app/shoppingList/shoppingList.tpl.html"
+			],
+			[
+				"sharepl",
+				"src/app/share/share.tpl.html"
+			],
+			[
+				"newspl",
+				"src/app/news/news.tpl.html"
+			],
+			[
+				"config.",
+				"node_modules/karma/config.tpl.coffee"
+			],
+			[
+				"console",
+				"node_modules/karma/node_modules/log4js/lib/appenders/console.js"
+			],
+			[
+				"login",
+				"src/app/login/login.js"
+			],
+			[
+				"cheltuielipl",
+				"src/app/budget/cheltuieli/cheltuieli.tpl.html"
+			],
+			[
+				"dash",
+				"src/app/budget/dashboard/dashboard.js"
+			],
+			[
+				"cheltuipl",
+				"src/app/budget/cheltuieli/cheltuieli.tpl.html"
+			],
+			[
+				"cheltui",
+				"src/app/budget/cheltuieli/cheltuieli.js"
+			],
+			[
+				"cloud",
+				"src/app/services/Cloud.js"
+			],
+			[
+				"daspl",
+				"src/app/budget/dashboard/dashboard.tpl.html"
+			],
+			[
+				"dashtpl",
+				"src/app/budget/dashboard/dashboard.tpl.html"
+			],
+			[
+				"prevent",
+				"src/app/directives/preventDefault.js"
+			],
+			[
+				"scaffo",
+				"vendor/bootstrap/less/scaffolding.less"
+			],
+			[
+				"variab",
+				"vendor/bootstrap/less/variables.less"
+			],
+			[
+				"variabl",
+				"src/less/variables.less"
+			],
+			[
+				"bootstrap",
+				"vendor/bootstrap/less/bootstrap.less"
+			],
+			[
+				"main.less",
+				"src/less/main.less"
+			],
+			[
+				"index.",
+				"src/index.html"
+			],
+			[
+				"build/index.html",
+				"node_modules/karma/node_modules/log4js/node_modules/readable-stream/node_modules/string_decoder/build/node_modules/cheerio/node_modules/CSSselect/test/qwery/index.html"
+			],
+			[
+				"app.js",
+				"src/app/app.js"
+			],
+			[
+				"app.",
+				"~/budget/webapp-budget/src/app/login/login.js"
+			],
+			[
+				"signin",
+				"signin.html"
+			],
+			[
+				"login.j",
+				"src/app/login/login.js"
+			],
+			[
+				"usage.tpl",
+				"src/app/usage/usage.tpl.html"
+			],
+			[
+				"scaff",
+				"vendor/bootstrap/less/scaffolding.less"
+			],
+			[
+				"usage",
+				"src/app/usage/usage.tpl.html"
+			],
+			[
+				"events",
+				"src/app/events/events.tpl.html"
+			],
+			[
+				"scaffol",
+				"vendor/bootstrap/less/scaffolding.less"
+			],
+			[
+				"loginj",
+				"src/app/login/login.js"
+			],
+			[
+				"loginjs",
+				"src/app/login/login.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"plane",
+				"~/workspace/inspecter/plane/inspecter-plane.sublime-project"
+			],
+			[
+				"inspecplan",
+				"~/workspace/inspecter/plane/inspecter-plane.sublime-project"
+			],
+			[
+				"inspecplane",
+				"~/workspace/inspecter/plane/inspecter-plane.sublime-project"
+			],
+			[
+				"",
+				"~/workspace/mypass/webplatform/mypassweb.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 175.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

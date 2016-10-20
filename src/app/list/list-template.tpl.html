@@ -1,0 +1,49 @@
+<span ng-if=" ! list.ready" class="list-panel not-ready">
+	<span class="fa fa-4x fa-spin fa-refresh"></span>
+</span>
+<span ng-if="list.ready" class="list-panel ready">
+	<div class="title">{{list.name}}<button class="btn btn-lg btn-link pull-right" ng-click="removeList()"><span class="fa fa-times-circle"></span></button></div>
+
+<!-- <form class="form" name="createListForm" ng-submit="createList()" novalidate>
+	<div class="large-input-container">
+		<input class="large-input" type="text" ng-model="createListInput" placeholder="Create new list"/>
+	</div>
+</form> -->
+
+	<div class="body">
+		<div class="item-input">
+
+			<form class="form-inline" novalidate>
+				<div class="form-group col-xs-2">
+					<input class="item-qty" type="text" placeholder="Qty" ng-model="item.qty">
+				</div>
+				<div class="form-group unit-dropdown col-xs-2">
+					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" ng-focus="item.showDropdown = true">
+					<div class="unit-dropdown-content" ng-show="item.showDropdown">
+						<a href ng-repeat="unit in units" ng-click="setUnit(unit)">{{unit}}</a>
+					</div>
+				</div>
+				<div class="form-group col-xs-6">
+					<input type="text" placeholder="Add new item to this list" ng-model="item.name"/>
+				</div>
+				<!-- <div class=col-xs-2> -->
+				<button class="btn btn-primary" type="submit" ng-click="addItem()"><span class="fa fa-plus"></span></button>
+				<!-- </div> -->
+			</form>
+		</div>
+
+		<div>
+			<table>
+				<thead></thead>
+				<tbody>
+					<tr ng-repeat="item in list.items">
+						<input type="checkbox" />
+						{{item.name}};
+						{{item.qty}};
+						{{item.unit}}
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</span>

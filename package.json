@@ -1,0 +1,31 @@
+{
+  "name": "template-web",
+  "version": "0.0.1",
+  "description": "A short boilerplate template for future web projects",
+  "main": "Gruntfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-html2js": "^0.3.6",
+    "grunt-sass": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngbp/ngbp"
+  },
+  "author": "Dan Vandachevici <dan.vandachevici@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngbp/ngbp/issues"
+  },
+  "homepage": "https://github.com/ngbp/ngbp"
+}

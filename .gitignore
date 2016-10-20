@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+CHANGELOG.md
+README.md
+changelog.tpl
+debug/
+karma/
+module.prefix
+module.suffix
+template-web.sublime-project
+template-web.sublime-workspace
+tools.md
