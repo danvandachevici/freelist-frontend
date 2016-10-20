@@ -1,6 +1,6 @@
 var app = angular.module( 'free-list' );
 
-app.factory('backend', ['$http', 'user', function ($http, user){
+app.factory('backend', ['$http', '$location', 'user', function ($http, $location, user){
 	var api = {};
 
 	api.post = function (path, data, cb) {
@@ -24,7 +24,15 @@ app.factory('backend', ['$http', 'user', function ($http, user){
 		data.auth = {
 			token: user.token
 		};
-		api.post(path, data, cb);
+		api.post(path, data, function (err, res) {
+			if (err) {
+				if (err.status === 401) {
+					$location.path('/login');
+					return;
+				}
+			}
+			cb(err, res);
+		});
 	};
 
 	return api;

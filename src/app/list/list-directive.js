@@ -33,7 +33,7 @@ app.directive('list', function () {
 				});
 			};
 			$scope.addItem = function () {
-				console.log ("Might work!");
+				// console.log ("Might work!");
 				backend.postAuth("/api/lists/addItemToList", {item: $scope.item, list_id: $scope.listid}, function (err, result) {
 					if ($scope.list.items) {
 						$scope.list.items.push($scope.item);

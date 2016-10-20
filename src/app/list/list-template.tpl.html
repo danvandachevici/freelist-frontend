@@ -33,14 +33,20 @@
 		</div>
 
 		<div>
+			<input type="checkbox" />
 			<table>
 				<thead></thead>
 				<tbody>
 					<tr ng-repeat="item in list.items">
-						<input type="checkbox" />
-						{{item.name}};
-						{{item.qty}};
-						{{item.unit}}
+						<td>
+							{{item.name}}
+						</td>
+						<td>
+							{{item.qty}}
+						</td>
+						<td>
+							{{item.unit}}
+						</td>
 					</tr>
 				</tbody>
 			</table>
