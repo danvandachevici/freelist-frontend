@@ -4,42 +4,37 @@
 <span ng-if="list.ready" class="list-panel ready">
 	<div class="title">{{list.name}}<button class="btn btn-lg btn-link pull-right" ng-click="removeList()"><span class="fa fa-times-circle"></span></button></div>
 
-<!-- <form class="form" name="createListForm" ng-submit="createList()" novalidate>
-	<div class="large-input-container">
-		<input class="large-input" type="text" ng-model="createListInput" placeholder="Create new list"/>
-	</div>
-</form> -->
-
 	<div class="body">
 		<div class="item-input">
 
-			<form class="form-inline" novalidate>
-				<div class="form-group col-xs-2">
-					<input class="item-qty" type="text" placeholder="Qty" ng-model="item.qty">
+			<form class="form-inline" name="newItemForm" novalidate>
+				<div class="form-group col-xs-2" ng-class='{"has-error": newItemForm.qty.$dirty && newItemForm.qty.$invalid}'>
+					<input class="item-qty" type="number" placeholder="Qty" name="qty" ng-model="item.qty" required>
 				</div>
-				<div class="form-group unit-dropdown col-xs-2">
-					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" ng-focus="item.showDropdown = true">
+				<div class="form-group unit-dropdown col-xs-2" tabindex="-1">
+					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" name="unit" ng-focus="item.showDropdown = true" required>
 					<div class="unit-dropdown-content" ng-show="item.showDropdown">
 						<a href ng-repeat="unit in units" ng-click="setUnit(unit)">{{unit}}</a>
 					</div>
 				</div>
 				<div class="form-group col-xs-6">
-					<input type="text" placeholder="Add new item to this list" ng-model="item.name"/>
+					<input type="text" placeholder="Add new item to this list" name="item_id" ng-model="item.item_id" required/>
 				</div>
-				<!-- <div class=col-xs-2> -->
-				<button class="btn btn-primary" type="submit" ng-click="addItem()"><span class="fa fa-plus"></span></button>
-				<!-- </div> -->
+				<button class="btn btn-primary" type="submit" ng-click="addItem()" ng-disabled="!newItemForm.$valid" ><span class="fa fa-plus"></span></button>
 			</form>
 		</div>
 
 		<div>
-			<input type="checkbox" />
-			<table>
+			<table class="table">
 				<thead></thead>
 				<tbody>
+					<!-- <listitem ng-repeat="item in list.items" item="item"></listitem> -->
 					<tr ng-repeat="item in list.items">
 						<td>
-							{{item.name}}
+							<input type="checkbox" />
+						</td>
+						<td>
+							{{item.item_id}}
 						</td>
 						<td>
 							{{item.qty}}
@@ -47,6 +42,7 @@
 						<td>
 							{{item.unit}}
 						</td>
+						<td><button class="btn btn-sm btn-danger" ng-click="removeItemFromList(item)"><span class="fa fa-trash"></span></button></td>
 					</tr>
 				</tbody>
 			</table>

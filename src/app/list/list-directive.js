@@ -33,10 +33,19 @@ app.directive('list', function () {
 				});
 			};
 			$scope.addItem = function () {
-				// console.log ("Might work!");
 				backend.postAuth("/api/lists/addItemToList", {item: $scope.item, list_id: $scope.listid}, function (err, result) {
 					if ($scope.list.items) {
-						$scope.list.items.push($scope.item);
+						var found = 0;
+						for (var i = 0; i < $scope.list.items.length; i++) {
+							if ($scope.list.items[i].item_id === $scope.item.item_id && $scope.list.items[i].unit === $scope.item.unit) {
+								$scope.list.items[i].qty += parseInt($scope.item.qty);
+								found = 1;
+								break;
+							}
+						}
+						if (!found) {
+							$scope.list.items.push($scope.item);
+						}
 					} else {
 						$scope.list.items = [$scope.item];
 					}
@@ -45,6 +54,12 @@ app.directive('list', function () {
 			$scope.setUnit = function (unit) {
 				$scope.item.showDropdown = false;
 				$scope.item.unit = unit;
+			};
+			$scope.removeItemFromList = function (item) {
+				var list_id = $scope.listid;
+				backend.postAuth("/api/lists/removeItem", {item: item, list_id: $scope.listid}, function (err, result) {
+					$scope.list.items.splice($scope.list.items.indexOf(item), 1);
+				});
 			};
 
 			$scope.list = {ready: false};
