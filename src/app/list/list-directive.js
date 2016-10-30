@@ -8,6 +8,9 @@ app.directive('list', function () {
 		},
 		controller: ['$scope', '$timeout', 'backend', function ($scope, $timeout, backend) {
 			$scope.units = ["kg", "l", "buc"];
+			$scope.checked = {};
+			var i = 0;
+
 
 			$scope.item = {
 				qty: "",
@@ -15,13 +18,34 @@ app.directive('list', function () {
 				unit: ""
 			};
 
+			$scope.switchChecked = function (idx, fromlist, tolist) {
+				console.log("Switch checked");
+				var item = fromlist[idx];
+				item.checked = !item.checked;
+				fromlist.splice(idx, 1);
+				tolist.unshift(item);
+			};
+			var sortByCreated = function (a, b) {
+				return a.created - b.created;
+			};
+			var sortByDone = function (a, b) {
+				return a.doneTs - b.doneTs;
+			};
+
 			var updateList = function (id) {
         		backend.postAuth("/api/lists/getListDetails", {list_id: id}, function (err, result) {
-        			$scope.list = result;
+        			var donelist = [];
+        			var notdonelist = [];
         			backend.postAuth("/api/lists/listItems", {list_id: id}, function (err, result) {
-        				console.log ("Result:", result);
-        				console.log ("err:", err);
-        				$scope.list.items = result;
+        				for ( i = 0; i < result.length; i++) {
+        					if (result[i].done) {
+        						donelist.push(result[i]);
+        					} else {
+        						notdonelist.push(result[i]);
+        					}
+        				}
+        				$scope.notdonelist = notdonelist.sort(sortByCreated);
+        				$scope.donelist = donelist.sort(sortByDone);
 	        			$scope.list.ready = true;
         			});
         		});

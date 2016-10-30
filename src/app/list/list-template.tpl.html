@@ -29,20 +29,42 @@
 				<thead></thead>
 				<tbody>
 					<!-- <listitem ng-repeat="item in list.items" item="item"></listitem> -->
-					<tr ng-repeat="item in list.items">
-						<td>
-							<input type="checkbox" />
+					<tr ng-repeat="item in notdonelist" class="listitem-row">
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, notdonelist, donelist)">
+							<input type="checkbox" ng-model="item.checked"/>
 						</td>
-						<td>
-							{{item.item_id}}
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, notdonelist, donelist)">
+							<span>{{item.item_id}}</span>
 						</td>
-						<td>
-							{{item.qty}}
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, notdonelist, donelist)">
+							<span>{{item.qty}}</span>
 						</td>
-						<td>
-							{{item.unit}}
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, notdonelist, donelist)">
+							<span>{{item.unit}}</span>
 						</td>
-						<td><button class="btn btn-sm btn-danger" ng-click="removeItemFromList(item)"><span class="fa fa-trash"></span></button></td>
+						<td class="listitem">
+							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList(item)" ng-disabled="item.checked"><span class="fa fa-trash"></span></button></div>
+						</td>
+					</tr>
+					<tr ng-repeat="item in donelist" class="listitem-row">
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, donelist, notdonelist)">
+							<div class="checkbox">
+								<input id="check1_{{item.item_id}}" type="checkbox" ng-model="item.checked"/>
+								<label for="check1_{{item.item_id}}"></label>
+							</div>
+						</td>
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, donelist, notdonelist)">
+							<span>{{item.item_id}}</span>
+						</td>
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, donelist, notdonelist)">
+							<span>{{item.qty}}</span>
+						</td>
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="switchChecked($index, donelist, notdonelist)">
+							<span>{{item.unit}}</span>
+						</td>
+						<td class="listitem">
+							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList(item)" ng-disabled="item.checked"><span class="fa fa-trash"></span></button></div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
