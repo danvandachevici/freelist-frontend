@@ -8,6 +8,8 @@ app.directive('list', function () {
 		},
 		controller: ['$scope', '$timeout', 'backend', function ($scope, $timeout, backend) {
 			$scope.units = ["kg", "l", "buc"];
+			$scope.donelist = [];
+			$scope.notdonelist = [];
 			$scope.checked = {};
 			var i = 0;
 
@@ -71,20 +73,20 @@ app.directive('list', function () {
 			};
 			$scope.addItem = function () {
 				backend.postAuth("/api/lists/addItemToList", {item: $scope.item, list_id: $scope.listid}, function (err, result) {
-					if ($scope.list.items) {
+					if ($scope.notdonelist) {
 						var found = 0;
-						for (var i = 0; i < $scope.list.items.length; i++) {
-							if ($scope.list.items[i].item_id === $scope.item.item_id && $scope.list.items[i].unit === $scope.item.unit) {
-								$scope.list.items[i].qty += parseInt($scope.item.qty);
+						for (var i = 0; i < $scope.notdonelist.length; i++) {
+							if ($scope.notdonelist[i].item_id === $scope.item.item_id && $scope.notdonelist[i].unit === $scope.item.unit) {
+								$scope.notdonelist[i].qty += parseInt($scope.item.qty);
 								found = 1;
 								break;
 							}
 						}
 						if (!found) {
-							$scope.list.items.push($scope.item);
+							$scope.notdonelist.push($scope.item);
 						}
 					} else {
-						$scope.list.items = [$scope.item];
+						$scope.notdonelist = [$scope.item];
 					}
 				});
 			};
