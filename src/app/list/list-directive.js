@@ -18,12 +18,25 @@ app.directive('list', function () {
 				unit: ""
 			};
 
-			$scope.switchChecked = function (idx, fromlist, tolist) {
-				console.log("Switch checked");
+			$scope.handleCheckboxCheck = function (idx, fromlist, tolist) {
 				var item = fromlist[idx];
 				item.checked = !item.checked;
+				$scope.switchChecked(idx, fromlist, tolist);
+			};
+			$scope.switchChecked = function (idx, fromlist, tolist) {
+				var item = fromlist[idx];
+				item.loading = true;
 				fromlist.splice(idx, 1);
 				tolist.unshift(item);
+
+				backend.postAuth("/api/lists/finishItem", {list_id: $scope.listid, item: item}, function (err, result) {
+					item.loading = false;
+					if (err) {
+						console.log ("Error, panic !");
+					} else {
+						// now what ?
+					}
+				});
 			};
 			var sortByCreated = function (a, b) {
 				return a.created - b.created;
@@ -38,7 +51,7 @@ app.directive('list', function () {
         			var notdonelist = [];
         			backend.postAuth("/api/lists/listItems", {list_id: id}, function (err, result) {
         				for ( i = 0; i < result.length; i++) {
-        					if (result[i].done) {
+        					if (result[i].checked) {
         						donelist.push(result[i]);
         					} else {
         						notdonelist.push(result[i]);
@@ -79,10 +92,11 @@ app.directive('list', function () {
 				$scope.item.showDropdown = false;
 				$scope.item.unit = unit;
 			};
-			$scope.removeItemFromList = function (item) {
+			$scope.removeItemFromList = function (idx, list) {
 				var list_id = $scope.listid;
+				var item = list[idx];
 				backend.postAuth("/api/lists/removeItem", {item: item, list_id: $scope.listid}, function (err, result) {
-					$scope.list.items.splice($scope.list.items.indexOf(item), 1);
+					list.splice(idx, 1);
 				});
 			};
 
