@@ -1,3 +1,11 @@
+<div class="navbar">
+	<div class="home-menuitem" ng-repeat="(key, val) in help">
+		<button ng-click="goto(val.url)"><span class="fa {{val.fa}}"></span></button>
+		<span class="tooltiptext">{{val.text}}</span>
+	</div>
+</div>
+
+
 <form class="form" name="createListForm" ng-submit="createList()" novalidate>
 	<div class="large-input-container">
 		<input class="large-input" type="text" ng-model="createListInput" placeholder="Create new list"/>

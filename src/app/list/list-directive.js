@@ -49,6 +49,7 @@ app.directive('list', function () {
 
 			var updateList = function (id) {
         		backend.postAuth("/api/lists/getListDetails", {list_id: id}, function (err, result) {
+        			$scope.list.name = result.name;
         			var donelist = [];
         			var notdonelist = [];
         			backend.postAuth("/api/lists/listItems", {list_id: id}, function (err, result) {
