@@ -28,7 +28,8 @@ body {
 	position: relative;
 }
 .list-panel.ready {
-	overflow: scroll;
+	// overflow: scroll;
+	overflow: hidden;
 	background-color: #74AFAD;
 };
 .list-panel .title {
@@ -38,6 +39,8 @@ body {
 	font-size: 2em;
 };
 .list-panel .body{
+	height: 100%;
+	overflow: scroll;
 	margin-top: 12px;
 }
 .body input {

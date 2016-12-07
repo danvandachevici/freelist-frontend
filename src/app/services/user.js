@@ -31,6 +31,21 @@ app.factory('user', ['$state', '$cookies', '$http', function ($state, $cookies, 
 			return user.redirectToLogin();
 		}
 	};
+	user.logout = function (cb){
+		$cookies.remove("token");
+		var req = $http({
+			method: "POST",
+			url: "/api/auth/logout",
+			data: {
+				token: this.token
+			}
+		});
+		req.then(function success(resp){
+			cb(null);
+		}, function failure(resp){
+			cb(resp);
+		});
+	};
 	user.saveToken = function (token) {
 		console.log ("Saving token:", token);
 		user.token = token;

@@ -84,11 +84,13 @@ app.directive('list', function () {
 							}
 						}
 						if (!found) {
-							$scope.notdonelist.push($scope.item);
+							var newitem = JSON.parse(JSON.stringify($scope.item));
+							$scope.notdonelist.unshift(newitem);
 						}
 					} else {
 						$scope.notdonelist = [$scope.item];
 					}
+					$scope.item = {};
 				});
 			};
 			$scope.setUnit = function (unit) {
