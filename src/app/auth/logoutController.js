@@ -23,7 +23,7 @@ app.controller("LogoutCtrl", ['$scope', '$window', '$state', '$timeout', '$locat
 			// todo ... figure out what to do on error from logout
 		}
 		$timeout(function () {
-			$state.go("list-home");
-		}, 2000);
+			$state.go("auth-login");
+		}, 1000);
 	});
 }]);

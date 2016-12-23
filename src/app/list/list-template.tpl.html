@@ -29,8 +29,9 @@
 				<tbody>
 					<!-- <listitem ng-repeat="item in list.items" item="item"></listitem> -->
 					<tr ng-repeat="item in notdonelist" class="listitem-row">
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}">
-							<input type="checkbox" ng-model="item.checked" ng-change="switchChecked($index, notdonelist, donelist)"/>
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck($index, notdonelist, donelist)">
+							<img src="assets/checkbox-unchecked.png">
+							<!-- <input type="checkbox" ng-model="item.checked" ng-change="switchChecked($index, notdonelist, donelist)" name="{{item.item_id}}" id="{{item.item_id}}"/> -->
 						</td>
 						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck($index, notdonelist, donelist)">
 							<span>{{item.item_id}}</span>
@@ -46,8 +47,9 @@
 						</td>
 					</tr>
 					<tr ng-repeat="item in donelist" class="listitem-row">
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}">
-							<input id="check1_{{item.item_id}}" type="checkbox" ng-model="item.checked" ng-change="switchChecked($index, donelist, notdonelist)"/>
+						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck($index, donelist, notdonelist)">
+							<img src="assets/checkbox-checked.png">
+							<!-- <input id="check1_{{item.item_id}}" type="checkbox" ng-model="item.checked" ng-change="switchChecked($index, donelist, notdonelist)"/> -->
 						</td>
 						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck($index, donelist, notdonelist)">
 							<span>{{item.item_id}}</span>

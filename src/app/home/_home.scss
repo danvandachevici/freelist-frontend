@@ -1,3 +1,9 @@
+body {
+    background: url("../assets/wood1.jpg");
+    background-repeat: repeat;
+    font-family: 'Trirong', serif;
+    color: #001f3f;
+}
 .home-menuitem {
     position: relative;
     display: inline;
@@ -21,3 +27,7 @@
 .home-menuitem:hover .tooltiptext {
     visibility: visible;
 };
+#main-navbar {
+    background-color: white;
+    color: white;
+}

@@ -50,6 +50,7 @@ module.exports = function ( grunt ) {
 		'copy:d_app_js',
 		'copy:d_vendor_js',
 		'copy:d_vendor_css',
+		"copy:d_assets",
 		'sass:debug',
 		'build_index:debug'
 	]);

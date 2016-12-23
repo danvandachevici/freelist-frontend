@@ -21,6 +21,7 @@ module.exports = {
    * app's unit tests.
    */
   app_files: {
+    assets: ["src/assets/*"],
     js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
     templates: [ 'src/app/**/*.tpl.html' ],
     images: "src/img/",

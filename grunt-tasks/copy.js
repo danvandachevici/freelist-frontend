@@ -28,6 +28,12 @@ module.exports = {
 			return content.replace (/sourceMappingURL/ig, '')
 		}
 	},
+	d_assets: {
+		expand: true,
+		flatten: true,
+		src: ["<%= app_files.assets %>"],
+		dest: "<%= debug_dir %>/pub/assets/"
+	},
 	d_app_fonts: {
 		expand: true,
 		flatten: true,
