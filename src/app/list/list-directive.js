@@ -20,16 +20,28 @@ app.directive('list', function () {
 				unit: ""
 			};
 
-			$scope.handleCheckboxCheck = function (idx, fromlist, tolist) {
-				var item = fromlist[idx];
-				item.checked = !item.checked;
-				$scope.switchChecked(idx, fromlist, tolist);
-			};
-			$scope.switchChecked = function (idx, fromlist, tolist) {
-				var item = fromlist[idx];
+			$scope.handleCheckboxCheck = function (item, idx) {
+
+				console.log ("Check:", item, idx);
+
 				item.loading = true;
-				fromlist.splice(idx, 1);
-				tolist.unshift(item);
+				item.checked = !item.checked;
+				var i = 0;
+				var inserted;
+
+				if (item.checked) {
+					// it was in notdonelist, goes to donelist.
+					console.log ("Item was not done, so removing it from not done list, index: ", idx);
+					$scope.notdonelist.splice(idx, 1);
+					$scope.donelist.push(item);
+        			$scope.donelist = $scope.donelist.sort(sortByDone);
+				} else {
+					// it was checked, now user clicked to uncheck it >> goes to notdonelist
+					console.log ("Item was done, so removing it from done list, index: ", idx);
+					$scope.donelist.splice(idx, 1);
+					$scope.notdonelist.push(item);
+					$scope.notdonelist = $scope.notdonelist.sort(sortByCreated);
+				}
 
 				backend.postAuth("/api/lists/finishItem", {list_id: $scope.listid, item: item}, function (err, result) {
 					item.loading = false;
@@ -40,6 +52,7 @@ app.directive('list', function () {
 					}
 				});
 			};
+			
 			var sortByCreated = function (a, b) {
 				return a.created - b.created;
 			};

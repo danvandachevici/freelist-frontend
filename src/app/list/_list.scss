@@ -76,7 +76,8 @@
 .item-input {
 	width: 100%;
 	display: block;
-	border-bottom: solid 1px #33CEFF;
+	border-bottom: 4px solid #fafafa;
+	// border-bottom: solid 1px #33CEFF;
 };
 .item-input:focus {
 	border-bottom: solid 3px #335EFF;
