@@ -11,9 +11,12 @@
 					<input class="item-qty" type="number" placeholder="Qty" name="qty" ng-model="item.qty" required>
 				</div>
 				<div class="form-group unit-dropdown col-xs-2" tabindex="-1">
-					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" name="unit" ng-focus="item.showDropdown = true" required>
+					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" name="unit" ng-focus="item.showDropdown = true; " ng-focus-out="item.showDropdown = false" required>
 					<div class="unit-dropdown-content" ng-show="item.showDropdown">
-						<a href ng-repeat="unit in units" ng-click="setUnit(unit)">{{unit}}</a>
+						<ul class="unit-list">
+							<li class="unit-list-item" ng-repeat="unit in units | filter:item.unit" ng-click="setUnit(unit)" tabindex=-1>{{unit}}</li>
+						</ul>
+						<!-- <a href ng-repeat="unit in units" ng-click="setUnit(unit)" ng-init="units[0]" tabindex=-1>{{unit}}</a> -->
 					</div>
 				</div>
 				<div class="form-group col-xs-6">

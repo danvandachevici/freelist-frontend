@@ -127,11 +127,21 @@
 	height: 60px;
 	font-size: 3em;
 	font-weight: bold;
-	// margin: auto;
-	// margin: 0 auto;
-	// height: 100%;
-	// position: relative;
-}
+};
 tr.listitem-row:last-child {
 	border-bottom: 1px solid #fafafa;
-}
+};
+.unit-list {
+	list-style-type: none;
+	width: 100px;
+	margin: auto;
+	padding: 0;
+	text-align: center;
+	background: #7FDBFF;
+};
+.unit-list-item {
+	cursor: pointer;
+	margin: 0px;
+	border: 1px solid #c0c0c0;
+	font-size: 1.4em;
+};

@@ -7,7 +7,7 @@ app.directive('list', function () {
 			listid: "="
 		},
 		controller: ['$scope', '$timeout', 'backend', function ($scope, $timeout, backend) {
-			$scope.units = ["kg", "l", "buc"];
+			$scope.units = ["kg", "l", "pcs", "g"];
 			$scope.donelist = [];
 			$scope.notdonelist = [];
 			$scope.checked = {};
