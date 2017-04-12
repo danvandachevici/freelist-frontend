@@ -5,6 +5,7 @@ README.md
 changelog.tpl
 debug/
 karma/
+release/
 module.prefix
 module.suffix
 template-web.sublime-project
