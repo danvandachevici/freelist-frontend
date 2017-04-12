@@ -27,7 +27,7 @@ module.exports = {
     images: "src/img/",
     html: [ 'src/index.html' ],
     sass: [ "src/main.scss", "src/**/*.scss" ],
-    // sass: [ "src/**/*.scss" ],
+    css: [ "src/styles/*.css" ],
     fonts: []
   },
 

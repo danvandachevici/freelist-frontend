@@ -2,7 +2,11 @@ module.exports = {
 	options: {
 
 	},
-	
+
+    debug_css: {
+        src: ["<%= app_files.css %>"],
+        dest: "<%= debug_dir %>/pub/styles/style.css"
+    },
 	release_js: {
 		options: {
 			stripBanners: {block: true, line: true}

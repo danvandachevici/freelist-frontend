@@ -6,7 +6,7 @@ app.directive('list', function () {
 		scope: {
 			listid: "="
 		},
-		controller: ['$scope', '$timeout', 'backend', function ($scope, $timeout, backend) {
+		controller: ['$scope', '$timeout', 'backend', '$uibModal', function ($scope, $timeout, backend, $uibModal) {
 			$scope.units = ["kg", "l", "pcs", "g"];
 			$scope.donelist = [];
 			$scope.notdonelist = [];
@@ -80,11 +80,9 @@ app.directive('list', function () {
         		});
 			};
 
-			$scope.removeList = function () {
-				backend.postAuth("/api/lists/deleteList", {list_id: $scope.listid}, function (err, result) {
-					$scope.$emit("listRemoved", $scope.listid);
-				});
-			};
+			/*$scope.removeList = function () {
+				
+			};*/
 			$scope.addItem = function () {
 				backend.postAuth("/api/lists/addItemToList", {item: $scope.item, list_id: $scope.listid}, function (err, result) {
 					if ($scope.notdonelist) {
@@ -117,6 +115,23 @@ app.directive('list', function () {
 					list.splice(idx, 1);
 				});
 			};
+
+            $scope.openDeleteListModal = function () {
+                var listid = this.listid;
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: "list/removeListModal.tpl.html",
+                    controller: "removeListModalCtrl"
+                });
+                modalInstance.result.then(function (newlist) {
+                    backend.postAuth("/api/lists/deleteList", {list_id: listid}, function (err, result) {
+                        $scope.$emit("listRemoved", $scope.listid);
+                    });
+                    // var l = newlist.listId;
+                }, function (err) {
+                    console.log ("Changed plan about removing list", listid);
+                });
+            };
 
 			$scope.list = {ready: false};
 			updateList($scope.listid);

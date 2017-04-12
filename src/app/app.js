@@ -1,7 +1,8 @@
-angular.module( 'free-list', [
-  'app-templates',
-  'ngCookies',
-  'ui.router'
+angular.module( "free-list", [
+  "app-templates",
+  "ngCookies",
+  "ui.router",
+  "ui.bootstrap"
 ])
 
 .config( ['$stateProvider', '$urlRouterProvider', '$locationProvider', function ( $stateProvider, $urlRouterProvider, $locationProvider ) {
@@ -16,7 +17,6 @@ angular.module( 'free-list', [
 
 .controller( 'AppCtrl', ['$scope', '$rootScope', '$location', function ( $scope, $rootScope, $location ) {
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-    console.log ("State change start");
     if ( angular.isDefined( toState.data.pageTitle ) ) {
       $scope.pageTitle = toState.data.pageTitle + ' | Free-list' ;
     }
