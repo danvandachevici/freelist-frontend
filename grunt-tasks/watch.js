@@ -1,8 +1,10 @@
 module.exports = {
-	options: {
-		atBegin: true,
-		livereload: true
-	},
+    options: {
+        atBegin: true,
+        spawn: false,
+        livereload: true,
+        event: ["all"]
+    },
 	js: {
 		files: ['<%= app_files.js %>'],
 		tasks: ['jshint:debug', 'copy:d_app_js']

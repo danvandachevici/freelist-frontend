@@ -1,31 +1,15 @@
 var app = angular.module( 'free-list');
 
-app.factory('user', ['$state', '$cookies', '$http', function ($state, $cookies, $http) {
+app.factory('user', ['$state', '$cookies', 'configService', 'backend', function ($state, $cookies, configService, backend) {
 	var user = {};
 	user.lastCheckedTokenAt = 0;
-	user.token = "";
-
-	/*
-	var req = $http({
-		method: "POST",
-		url: path,
-		data: data
-	});
-	req.then(function success(resp) {
-		return cb(null, resp.data);
-	}, function fail (resp) {
-		var r = {
-			status: resp.status,
-			data: resp.data
-		};
-		return cb(r);
-	});
-	*/
+    user.jsonrpcid = 1;
 
 	user.login_local = function (){
 		// read from cookie
-		user.token = $cookies.get('token');
-		if (user.token) {
+		var token = $cookies.get('token');
+		if (token) {
+            configService.setAuth({token: token});
 			return true;
 		} else {
 			return user.redirectToLogin();
@@ -33,80 +17,42 @@ app.factory('user', ['$state', '$cookies', '$http', function ($state, $cookies, 
 	};
 	user.logout = function (cb){
 		$cookies.remove("token");
-		var req = $http({
-			method: "POST",
-			url: "/api/auth/logout",
-			data: {
-				token: this.token
-			}
-		});
-		req.then(function success(resp){
-			cb(null);
-		}, function failure(resp){
-			cb(resp);
-		});
+        var auth = configService.getAuth();
+        configService.setAuth({token: ''});
+        backend.call('/api/auth', 'logout', {}, function(err, resp) {
+            cb(err, resp);
+        });
 	};
-	user.saveToken = function (token) {
-		console.log ("Saving token:", token);
-		user.token = token;
-		var expires = new Date(new Date().getTime() + 86400000); // 1 day from now
+	user.saveToken = function (token, save) {
+        
+        configService.setAuth({token: token});
+        var day = 86400000;
+        var now = new Date().getTime();
+        var expires = new Date(now + 1*day); // 1 day from now
+        if (save) {
+            expires = new Date(now + 30*day);
+        }
 		$cookies.put('token', token, {expires: expires});
 	};
-	user.login_remote = function (data, cb){
-		var req = $http({
-			method: "POST",
-			url: "/api/auth/login",
-			data: data
-		});
-		req.then(
-			function success(resp){
-				if (resp.data.token) {
-					var tk = resp.data.token;
-					user.saveToken(tk);
-					return cb(null, tk);
-				} else {
-					return cb("Internal server error, please try again later");
-				}
-			},
-			function error(resp){
-				if (err.status === 403) {
-					console.log ("403 !!!");
-					return cb("Wrong login");
-				} else {
-					return cb("Internal server error");
-				}
-			}
-		);
+	user.login_remote = function (params, cb){
+        backend.simpleCall('/api/auth', 'login', params, function (err, result) {
+            if (err) {
+                return cb(err);
+            }
+            // configService.setAuth({token: result.token});
+            user.saveToken(result.token, params.remember);
+            cb(null, result.token);
+        });
 	};
-	user.getToken = function () {
-		return user.token;
-	};
-	user.signup = function (data, cb){
-		var req = $http({
-			method: "POST",
-			url: "/api/auth/signup",
-			data: data
-		});
-		req.then(
-			function success(resp){
-				if (resp.data.token) {
-					var tk = resp.data.token;
-					user.saveToken(tk);
-					return cb(null, tk);
-				} else {
-					return cb("Internal server error, please try again later");
-				}
-			},
-			function error(resp){
-				console.log ("RESP:", resp);
-				if (resp.status === 409) {
-					console.log ("409 user exists !!!");
-					return cb("User exists");
-				} else {
-					return cb("Internal server error");
-				}
-			}
-		);
+	user.signup = function (params, cb){
+        backend.simpleCall('/api/auth', 'signup', params, function (err, result) {
+            if (err) {
+                return cb(err);
+            }
+            // configService.setAuth({token: result.token});
+            user.saveToken(result.token);
+            cb(null, result.token);
+        });
 	};
 	user.redirectToLogin = function (){
 		$state.go("auth-login");

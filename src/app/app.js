@@ -15,7 +15,7 @@ angular.module( "free-list", [
 .run( function run () {
 })
 
-.controller( 'AppCtrl', ['$scope', '$rootScope', '$location', function ( $scope, $rootScope, $location ) {
+.controller( 'AppCtrl', ['$scope', '$rootScope', '$location', 'user', function ( $scope, $rootScope, $location, user ) {
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
       $scope.pageTitle = toState.data.pageTitle + ' | Free-list' ;

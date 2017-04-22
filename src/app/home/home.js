@@ -1,7 +1,7 @@
 angular.module( 'free-list')
 
 .config(['$stateProvider', function ( $stateProvider ) {
-    $stateProvider.state( 'list-home', {
+    $stateProvider.state( 'home', {
         url: '/',
         views: {
             mainview: {
@@ -19,7 +19,7 @@ angular.module( 'free-list')
         $scope.listarr.splice(index, 1);
     });
     $scope.getLists = function () {
-        backend.postAuth('/api/lists/getUserLists', {}, function (err, res) {
+        backend.call('/api/lists', 'getUserLists', {}, function (err, res) {
             $scope.listarr = res;
         });
     };

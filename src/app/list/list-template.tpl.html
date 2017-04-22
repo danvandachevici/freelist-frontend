@@ -14,172 +14,88 @@
         </form>
     </div>
 
-    <div class="list-wrap">
-        <div class="list-items-titles rep">
-            <div class="items" style="width: 20%;">
-                <div class="input input--nao">
-                    <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name">
-                    <label class="input__label input__label--nao" for="input-1">
-                        <span class="input__label-content input__label-content--nao">Quantity:</span>
-                    </label>
-                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                    </svg>
-                </div>
-            </div>
+    <div class="row list-wrap">
+        <!--  Repeate this wraper-->
+        <div class="wrap-main-list">
+            <div class="list-wrap">
+                <div class="list-items-titles rep">
 
-            <div class="items" style="width: 10%;">
-                <div class="input input--nao">
-                    <select class="input__field input__field--nao select">
-                        <option value="">Select</option>
-                        <option ng-repeat="unit in units" value="{{unit}}">{{unit}}</option>
-                    </select>
-                    <label class="input__label input__label--nao" for="input-1">
-                        <span class="input__label-content input__label-content--nao">Unit</span>
-                    </label>
-                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                    </svg>
-                </div>
-            </div>
+                    <!-- Start of editor -->
 
-            <div class="items">
-                <div class="input input--nao">
-                    <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name">
-                    <label class="input__label input__label--nao" for="input-1">
-                        <span class="input__label-content input__label-content--nao">Item name</span>
-                    </label>
-                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                    </svg>
+                    <div class="items" style="width: 20%;">
+                        <div class="input input--nao">
+                            <input class="input__field input__field--nao" type="number" id="input-1" required="" name="name" ng-model="item.qty" ng-disabled="addItemLoading">
+                            <label class="input__label input__label--nao" for="input-1">
+                                <span class="input__label-content input__label-content--nao">Quantity:</span>
+                            </label>
+                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="items" style="width: 10%;">
+                        <div class="input input--nao">
+                            <select class="input__field input__field--nao select" ng-model="item.unit" ng-disabled="addItemLoading">
+                                <option value="">Select</option>
+                                <option ng-repeat="unit in units" value="{{unit}}">{{unit}}</option>
+                            </select>
+                            <label class="input__label input__label--nao" for="input-1">
+                                <span class="input__label-content input__label-content--nao">Unit</span>
+                            </label>
+                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <div class="input input--nao">
+                            <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name" ng-model="item.item_id" ng-disabled="addItemLoading">
+                            <label class="input__label input__label--nao" for="input-1">
+                                <span class="input__label-content input__label-content--nao">Item name</span>
+                            </label>
+                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="items">
+                        <button style="margin-top: 8px;float: right;" type="button" class="btn btn-success" ng-click="addItem()" ng-disabled="addItemLoading"><i class="glyphicon glyphicon-plus"></i>Add New</button>
+                    </div>
+                    <!-- End of editor -->
                 </div>
-            </div>
-            <div class="items">
-                <button style="margin-top: 8px;float: right;" type="button" class="btn btn-success"><i class="glyphicon glyphicon-plus" ng-click="addItem()"></i>Add New</button>
+
+                <!-- List -->
+                <div class="list-items-titles">
+                    <div class="items chkbk"></div>
+                    <div class="items qty">Quantity</div>
+                    <div class="items unit">Unit</div>
+                    <div class="items ims">Items</div>
+                    <div class="items dlt">Delete</div>
+                </div>
+
+                <div class="list-items" ng-repeat="item in items track by $index">
+                    <div class="items chkbk">
+                        <div class="squaredTwo">
+                            <input type="checkbox" value="None" id="squaredTwo" name="check" ng-model="item.checked" ng-change="checkItem(item, $index);">
+                            <label for="squaredTwo"></label>
+                        </div>
+                    </div>
+                    <div class="items qty">{{item.qty}}</div>
+                    <div class="items unit">{{item.unit}}</div>
+                    <div class="items ims">{{item.item_id}}</div>
+                    <div class="items dlt" style="color: red; cursor: pointer" ng-click="removeItemFromList(item, $index);"><span class="fa fa-minus"></span>
+                    </div>
+                </div>
+                <!-- done showing the list -->
             </div>
         </div>
-        <div class="list-items-titles">
-            <div class="items chkbk"></div>
-            <div class="items qty">Quantity</div>
-            <div class="items unit">Unit</div>
-            <div class="items ims">Items</div>
-            <div class="items dlt">Delete</div>
-        </div>
-
-        <div class="list-items" ng-repeat="item in notdonelist">
-            <div class="items chkbk">
-                <div class="squaredTwo">
-                    <input type="checkbox" value="None" id="squaredTwo" name="check">
-                    <label for="squaredTwo"></label>
-                </div>
-            </div>
-            <div class="items qty">{{item.qty}}</div>
-            <div class="items unit">{{item.unit}}</div>
-            <div class="items ims">{{item.name}}</div>
-            <div class="items dlt">
-                <img class="delete-icon" src="img/delete.png" alt="">
-            </div>
-        </div>
-
-        <div class="list-items" ng-repeat="item in donelist">
-            <div class="items chkbk">
-                <div class="squaredTwo">
-                    <input type="checkbox" value="None" id="squaredTwo" name="check">
-                    <label for="squaredTwo"></label>
-                </div>
-            </div>
-            <div class="items qty">{{item.qty}}</div>
-            <div class="items unit">{{item.unit}}</div>
-            <div class="items ims">{{item.name}}</div>
-            <div class="items dlt">
-                <img class="delete-icon" src="img/delete.png" alt="">
-            </div>
-        </div>
-    </div>
-
-
-
+    </div> 
 </div>
 
 
 <a data-toggle="modal" data-target="#addnew" class="add-new-list" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
     <span style="margin-right: 0px;" class="glyphicon glyphicon-plus"></span>
 </a>
-
-
-
-
-<!-- <span ng-if=" ! list.ready" class="list-panel not-ready">
-	<span class="fa fa-4x fa-spin fa-refresh"></span>
-</span>
-<span ng-if="list.ready" class="list-panel ready">
-	<div class="title">{{list.name}}<button class="btn btn-lg btn-link pull-right" ng-click="removeList()"><span class="fa fa-times-circle"></span></button></div>
-
-	<div class="body">
-		<div class="item-input">
-			<form class="form-inline" name="newItemForm" novalidate>
-				<div class="form-group col-xs-2" ng-class='{"has-error": newItemForm.qty.$dirty && newItemForm.qty.$invalid}'>
-					<input class="item-qty" type="number" placeholder="Qty" name="qty" ng-model="item.qty" required>
-				</div>
-				<div class="form-group unit-dropdown col-xs-2" tabindex="-1">
-					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" name="unit" ng-focus="item.showDropdown = true; " ng-focus-out="item.showDropdown = false" required>
-					<div class="unit-dropdown-content" ng-show="item.showDropdown">
-						<ul class="unit-list">
-							<li class="unit-list-item" ng-repeat="unit in units | filter:item.unit" ng-click="setUnit(unit)" tabindex=-1>{{unit}}</li>
-						</ul>
-					</div>
-				</div>
-				<div class="form-group col-xs-6">
-					<input type="text" placeholder="Add new item to this list" name="item_id" ng-model="item.item_id" required/>
-				</div>
-				<button class="btn btn-primary" type="submit" ng-click="addItem()" ng-disabled="!newItemForm.$valid" ><span class="fa fa-plus"></span></button>
-			</form>
-		</div>
-
-		<div>
-			<table class="table">
-				<thead></thead>
-				<tbody>
-					<tr ng-repeat="item in notdonelist" class="listitem-row">
-						<td class="clickable listitem" ng-click="handleCheckboxCheck(item, $index)">
-							<img src="assets/checkbox-checked.png" ng-if=" ! item.loading && item.checked">
-							<img src="assets/checkbox-unchecked.png" ng-if=" ! item.loading && !item.checked">
-							<span class="fa fa-2x fa-refresh fa-spin" ng-if="item.loading"></span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.item_id}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.qty}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.unit}}</span>
-						</td>
-						<td class="listitem">
-							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList($index, notdonelist)"><span class="fa fa-trash"></span></button></div>
-						</td>
-					</tr>
-					<tr ng-repeat="item in donelist" class="listitem-row">
-						<td class="clickable listitem" ng-click="handleCheckboxCheck(item, $index)">
-							<img src="assets/checkbox-checked.png" ng-if=" ! item.loading && item.checked">
-							<img src="assets/checkbox-unchecked.png" ng-if=" ! item.loading && !item.checked">
-							<span class="fa fa-2x fa-refresh fa-spin" ng-if="item.loading"></span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.item_id}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.qty}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.unit}}</span>
-						</td>
-						<td class="listitem">
-							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList($index, donelist)"><span class="fa fa-trash"></span></button></div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</span> -->

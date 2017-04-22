@@ -13,21 +13,25 @@ app.config(['$stateProvider', function ( $stateProvider ) {
     });
 }]);
 
-app.controller("LoginCtrl", ['$scope', '$state', 'user', function ($scope, $state, user) {
+app.controller("LoginCtrl", ['$scope', '$state', 'user', 'configService', function ($scope, $state, user, configService) {
 	$scope.loginObj = {};
 	$scope.loginLoading = false;
 	$scope.errorOccurred = "";
 
-	$scope.login = function () {
-		$scope.loginLoading = true;
-		user.login_remote({email: $scope.loginObj.email, pass: $scope.loginObj.pass}, function (err, res) {
-			$scope.loginLoading = false;
-			if (err) {
-				console.log ("Login-remote err:", err);
-				$scope.errorOccurred = err;
-			} else {
-				$state.go('list-home');
-			}
-		});
-	};
+    $scope.login = function () {
+        $scope.loginLoading = true;
+        user.login_remote($scope.loginObj, function (err, res) {
+            $scope.loginLoading = false;
+            if (err) {
+                if (err.status === 403) {
+                    $scope.errorOccurred = 'Wrong login';
+                } else {
+                    $scope.errorOccurred = err.msg;
+                }
+            } else {
+                var ret = configService.getReturnState();
+                $state.go(ret.name, ret.params);
+            }
+        });
+    };
 }]);

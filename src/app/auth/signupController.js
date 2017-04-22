@@ -13,19 +13,25 @@ app.config(['$stateProvider', function ( $stateProvider ) {
     });
 }]);
 
-app.controller("SignupCtrl", ['$scope', '$state', 'user', function ($scope, $state, user) {
+app.controller("SignupCtrl", ['$scope', '$state', 'user', 'configService', function ($scope, $state, user, configService) {
 	$scope.signupObj = {};
 	$scope.signupLoading = false;
 	$scope.errorOccurred = null;
 
 	$scope.signup = function () {
 		$scope.signupLoading = true;
+
 		user.signup({email: $scope.signupObj.email, pass: $scope.signupObj.pass}, function (err, res) {
 			$scope.signupLoading = false;
 			if (err) {
-				$scope.errorOccurred = err;
+                if (err.status === 409) {
+                    $scope.errorOccurred = "User already exists.";
+                } else {
+                    $scope.errorOccurred = err.msg;
+                }
 			} else {
-				$state.go('list-home');
+                var ret = configService.getReturnState();
+				$state.go(ret.name, ret.params);
 			}
 		});
 	};
