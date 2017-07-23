@@ -13,7 +13,7 @@ angular.module( 'free-list')
     });
 }])
 
-.controller( 'HomeCtrl', ['$scope', '$state', '$timeout', "backend", '$uibModal', function HomeController( $scope, $state, $timeout, backend, $uibModal ) {
+.controller( 'HomeCtrl', ['$scope', '$state', '$timeout', 'user', "backend", '$uibModal', function HomeController( $scope, $state, $timeout, user, backend, $uibModal ) {
     $scope.$on("listRemoved", function(event, listid){
         var index = $scope.listarr.indexOf(listid);
         $scope.listarr.splice(index, 1);
@@ -54,5 +54,8 @@ angular.module( 'free-list')
         $scope.help[item].show = false;
     };
     $scope.getLists();
+    $scope.logout = function () {
+        user.logout();
+    };
 }])
 ;

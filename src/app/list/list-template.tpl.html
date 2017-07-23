@@ -1,101 +1,120 @@
-<div>
-    <div class="wrap-header">
-        {{list.name}}
-        <button   data-toggle="modal" data-target="#shareit" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Share it" style="display: inline;margin: 0px -60px 0px 30px;" type="button" class="btn pull-left  btn-success"><i class="glyphicon glyphicon-share-alt"></i>share</button>
-        <a class="btn-close pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></a>
-    </div>
-    
-    <div style="display:none;" class="form-items">
-        <form action="" ng-dirty="">
-            <input type="text" placeholder="quantity">
-            <input type="text" placeholder="unit">
-            <input type="text" placeholder="add new item list">
-            <button>+</button>
-        </form>
-    </div>
-
-    <div class="row list-wrap">
-        <!--  Repeate this wraper-->
-        <div class="wrap-main-list">
-            <div class="list-wrap">
-                <div class="list-items-titles rep">
-
-                    <!-- Start of editor -->
-
-                    <div class="items" style="width: 20%;">
-                        <div class="input input--nao">
-                            <input class="input__field input__field--nao" type="number" id="input-1" required="" name="name" ng-model="item.qty" ng-disabled="addItemLoading">
-                            <label class="input__label input__label--nao" for="input-1">
-                                <span class="input__label-content input__label-content--nao">Quantity:</span>
-                            </label>
-                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="items" style="width: 10%;">
-                        <div class="input input--nao">
-                            <select class="input__field input__field--nao select" ng-model="item.unit" ng-disabled="addItemLoading">
-                                <option value="">Select</option>
-                                <option ng-repeat="unit in units" value="{{unit}}">{{unit}}</option>
-                            </select>
-                            <label class="input__label input__label--nao" for="input-1">
-                                <span class="input__label-content input__label-content--nao">Unit</span>
-                            </label>
-                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="items">
-                        <div class="input input--nao">
-                            <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name" ng-model="item.item_id" ng-disabled="addItemLoading">
-                            <label class="input__label input__label--nao" for="input-1">
-                                <span class="input__label-content input__label-content--nao">Item name</span>
-                            </label>
-                            <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="items">
-                        <button style="margin-top: 8px;float: right;" type="button" class="btn btn-success" ng-click="addItem()" ng-disabled="addItemLoading"><i class="glyphicon glyphicon-plus"></i>Add New</button>
-                    </div>
-                    <!-- End of editor -->
-                </div>
-
-                <!-- List -->
-                <div class="list-items-titles">
-                    <div class="items chkbk"></div>
-                    <div class="items qty">Quantity</div>
-                    <div class="items unit">Unit</div>
-                    <div class="items ims">Items</div>
-                    <div class="items dlt">Delete</div>
-                </div>
-
-                <div class="list-items" ng-repeat="item in items track by $index">
-                    <div class="items chkbk">
-                        <div class="squaredTwo">
-                            <input type="checkbox" value="None" id="squaredTwo" name="check" ng-model="item.checked" ng-change="checkItem(item, $index);">
-                            <label for="squaredTwo"></label>
-                        </div>
-                    </div>
-                    <div class="items qty">{{item.qty}}</div>
-                    <div class="items unit">{{item.unit}}</div>
-                    <div class="items ims">{{item.item_id}}</div>
-                    <div class="items dlt" style="color: red; cursor: pointer" ng-click="removeItemFromList(item, $index);"><span class="fa fa-minus"></span>
-                    </div>
-                </div>
-                <!-- done showing the list -->
-            </div>
+<section>
+    <div>
+        <div class="wrap-header">
+            {{list.name}}
+            <button   data-toggle="modal" data-target="#shareit" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Share it" style="display: inline;margin: 0px -60px 0px 30px;" type="button" class="btn pull-left  btn-success"><i class="glyphicon glyphicon-share-alt"></i>share</button>
+            <a class="btn-close pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></a>
         </div>
-    </div> 
-</div>
+        
+        <div style="display:none;" class="form-items">
+            <form action="" ng-dirty="">
+                <input type="text" placeholder="quantity">
+                <input type="text" placeholder="unit">
+                <input type="text" placeholder="add new item list">
+                <button>+</button>
+            </form>
+        </div>
+
+        <div class="row list-wrap">
+            <!--  Repeat this wraper-->
+            <div class="wrap-main-list">
+                <div class="list-wrap">
+                    <div class="list-items-titles rep">
+
+                        <!-- Start of editor -->
+
+                        <div class="items" style="width: 20%;">
+                            <div class="input input--nao">
+                                <input class="input__field input__field--nao" type="number" id="input-1" required="" name="name" ng-model="item.qty" ng-disabled="addItemLoading">
+                                <label class="input__label input__label--nao" for="input-1">
+                                    <span class="input__label-content input__label-content--nao">Quantity:</span>
+                                </label>
+                                <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                    <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="items" style="width: 10%;">
+                            <div class="input input--nao">
+                                <select class="input__field input__field--nao select" ng-model="item.unit" ng-disabled="addItemLoading">
+                                    <option value="">Select</option>
+                                    <option ng-repeat="unit in units" value="{{unit}}">{{unit}}</option>
+                                </select>
+                                <label class="input__label input__label--nao" for="input-1">
+                                    <span class="input__label-content input__label-content--nao">Unit</span>
+                                </label>
+                                <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                    <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="items">
+                            <div class="input input--nao">
+                                <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name" ng-model="item.item_id" ng-disabled="addItemLoading">
+                                <label class="input__label input__label--nao" for="input-1">
+                                    <span class="input__label-content input__label-content--nao">Item name</span>
+                                </label>
+                                <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                                    <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="items">
+                            <button style="margin-top: 8px;float: right;" type="button" class="btn btn-success" ng-click="addItem()" ng-disabled="addItemLoading"><i class="glyphicon glyphicon-plus"></i>Add New</button>
+                        </div>
+                        <!-- End of editor -->
+                    </div>
+
+                    <!-- List -->
+                    <div class="list-items-titles">
+                        <div class="items chkbk"></div>
+                        <div class="items qty">Quantity</div>
+                        <div class="items unit">Unit</div>
+                        <div class="items ims">Items</div>
+                        <div class="items dlt">Delete</div>
+                    </div>
+
+                    <div class="list-items" ng-repeat="item in items track by $index">
+                        <div class="items chkbk">
+                            <div class="squaredTwo">
+                                <input type="checkbox" value="None" id="squaredTwo" name="check" ng-model="item.checked" ng-change="checkItem(item, $index);">
+                                <label for="squaredTwo"></label>
+                            </div>
+                        </div>
+                        <div class="items qty">{{item.qty}}</div>
+                        <div class="items unit">{{item.unit}}</div>
+                        <div class="items ims">{{item.item_id}}</div>
+                        <div class="items dlt" style="color: red; cursor: pointer" ng-click="removeItemFromList(item, $index);"><span class="fa fa-minus"></span>
+                        </div>
+                    </div>
+                    <!-- done showing the list -->
+                </div>
+            </div>
+        </div> 
+    </div>
 
 
-<a data-toggle="modal" data-target="#addnew" class="add-new-list" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
-    <span style="margin-right: 0px;" class="glyphicon glyphicon-plus"></span>
-</a>
+    <a data-toggle="modal" data-target="#addnew" class="add-new-list" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
+        <span style="margin-right: 0px;" class="glyphicon glyphicon-plus"></span>
+    </a>
+</section>
+
+
+
+<script type="text/javascript">
+        $(function(){
+
+            $('input').blur(function(e){
+                alert ("NOW");
+                var input = $(e.target);
+                if(input.val()){
+                    input.addClass('active');
+                } else {
+                    input.removeClass('active');
+                }
+            });
+        });
+    </script>

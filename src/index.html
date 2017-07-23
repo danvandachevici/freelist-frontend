@@ -2,29 +2,28 @@
 <html ng-app="free-list" ng-controller="AppCtrl">
 <head>
     <meta charset="utf-8">
-	<base href="/"></base>
-	<title ng-bind="pageTitle">Free-list</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/"></base>
+    <title ng-bind="pageTitle">Free-list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet" /> -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 
-	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-	<link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-	<!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-	<script type="text/javascript" src="<%= file %>"></script><% }); %>
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
 </head>
 
-<body>
-	<div ui-view="mainview"></div>
-</body>
-<!-- <script type="text/javascript">
+    <body>
+        <div ui-view="mainview"></div>
+    </body>
+    <script type="text/javascript">
         $(function(){
 
             $('input').blur(function(e){
-                alert ("NOW");
                 var input = $(e.target);
                 if(input.val()){
                     input.addClass('active');
@@ -33,5 +32,5 @@
                 }
             });
         });
-    </script> -->
+    </script>
 </html>

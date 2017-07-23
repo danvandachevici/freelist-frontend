@@ -2,23 +2,6 @@
 <header>
     <nav class="navbar">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="#" class="dwp-dwn1 dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="img/avtar.jpg" class="profile-img" alt="">
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="#">SETTING</a>
-                    </li>
-                    <li><a href="#">BOOK</a>
-                    </li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">LOGOUT</a>
-                    </li>
-                </ul>
-
-                <a class="navbar-brand" href="#">Free List</a>
-            </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -37,11 +20,12 @@
                             <li><a href="#">BOOK</a>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">LOGOUT</a>
+                            <li><a href ng-click="logout();">LOGOUT</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+                <a class="navbar-brand" href="#">Free List</a>
             </div>
             <!-- /.navbar-collapse -->
         </div>
