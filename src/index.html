@@ -16,21 +16,7 @@
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
 </head>
-
-    <body>
-        <div ui-view="mainview"></div>
-    </body>
-    <script type="text/javascript">
-        $(function(){
-
-            $('input').blur(function(e){
-                var input = $(e.target);
-                if(input.val()){
-                    input.addClass('active');
-                } else {
-                    input.removeClass('active');
-                }
-            });
-        });
-    </script>
+<body>
+    <div ui-view="mainview"></div>
+</body>
 </html>

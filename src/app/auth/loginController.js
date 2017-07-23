@@ -6,18 +6,27 @@ app.config(['$stateProvider', function ( $stateProvider ) {
         views: {
             mainview: {
                 controller: 'LoginCtrl',
-                templateUrl: 'auth/login.tpl.html'
+                // templateUrl: 'auth/login.tpl.html'
+                template: "<h3>Please wait ... </h3>"
             }
         },
         data:{ pageTitle: 'Login' }
     });
 }]);
 
-app.controller("LoginCtrl", ['$scope', '$state', 'user', 'configService', function ($scope, $state, user, configService) {
+app.controller("LoginCtrl", ['$scope', '$state', '$uibModal', 'user', 'configService', function ($scope, $state, $uibModal, user, configService) {
 	$scope.loginObj = {};
 	$scope.loginLoading = false;
 	$scope.errorOccurred = "";
 
+    var modalInstance = $uibModal.open({
+        templateUrl: 'auth/login.tpl.html',
+        controller: 'LoginCtrlModal',
+        size: 'md'
+    });
+}]);
+
+app.controller("LoginCtrlModal", ['$scope', '$uibModal', 'user', 'configService', function ($scope, $uibModal, user, configService) {
     $scope.login = function () {
         $scope.loginLoading = true;
         user.login_remote($scope.loginObj, function (err, res) {
