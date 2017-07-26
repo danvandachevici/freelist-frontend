@@ -9,10 +9,11 @@ app.factory("configService", ['$rootScope', function ($rootScope) {
         this.returnParams = params;
     };
     ret.getReturnState = function () {
-        return {
+        var retObj = {
             name: this.returnState || "home",
             params: this.returnParams || null
         };
+        return retObj;
     };
     ret.setAuth = function (auth) {
         this.auth = auth;

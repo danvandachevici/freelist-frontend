@@ -26,7 +26,7 @@ app.controller("LoginCtrl", ['$scope', '$state', '$uibModal', 'user', 'configSer
     });
 }]);
 
-app.controller("LoginCtrlModal", ['$scope', '$uibModal', 'user', 'configService', function ($scope, $uibModal, user, configService) {
+app.controller("LoginCtrlModal", ['$scope', '$uibModalInstance', '$state', 'user', 'configService', function ($scope, $uibModalInstance, $state, user, configService) {
     $scope.login = function () {
         $scope.loginLoading = true;
         user.login_remote($scope.loginObj, function (err, res) {
@@ -38,6 +38,7 @@ app.controller("LoginCtrlModal", ['$scope', '$uibModal', 'user', 'configService'
                     $scope.errorOccurred = err.msg;
                 }
             } else {
+                $uibModalInstance.close();
                 var ret = configService.getReturnState();
                 $state.go(ret.name, ret.params);
             }
