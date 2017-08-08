@@ -8,6 +8,16 @@
             <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
         </div>
 
+        <div class="list-items">
+            <item ng-repeat="item in notdonelist" item="{{item}}"></item>
+        </div>
+
+        <button class="add-item-button"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+    <!-- <a data-toggle="modal" data-target="#addnew" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
+        <span class="glyphicon glyphicon-plus"></span>
+    </a> -->
+</div>
 <!--
         <div>
             <div>
@@ -75,10 +85,3 @@
             </div>
         </div> 
 -->
-    </div>
-
-
-    <a data-toggle="modal" data-target="#addnew" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
-        <span class="glyphicon glyphicon-plus"></span>
-    </a>
-</div>

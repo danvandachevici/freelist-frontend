@@ -1,5 +1,5 @@
 var app = angular.module('free-list');
-app.directive('listitem', function () {
+app.directive('item', function () {
 	return {
 		restrict: "E",
 		templateUrl: "item/item-directive.tpl.html",
