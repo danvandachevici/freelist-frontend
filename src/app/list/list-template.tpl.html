@@ -1,19 +1,19 @@
 <div>
     <div class="list-card">
-        <div class="list-title">
-            <div class="menu-button"><a class="btn"><span class="fa fa-cog fa-2x"></span></a></div>
+        <div class="list-header">
+            <button class="menu-button"><span class="fa fa-cog fa-2x"></span></button>
             <!-- <div class="list-name">Lidl</div> -->
             <div class="list-name">{{list.name}}</div>
             <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
             <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
         </div>
 
-        <div class="list-items">
+        <div class="list-body">
             <item ng-repeat="item in notdonelist" item="{{item}}"></item>
         </div>
 
         <div class="list-bottom">
-            <button class="add-item-button"><span class="glyphicon glyphicon-plus"></span></button>
+            <button class="add-item-button" ng-click="openNewItemModal();"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
     </div>
     <!-- <a data-toggle="modal" data-target="#addnew" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">

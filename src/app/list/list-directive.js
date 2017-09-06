@@ -142,6 +142,24 @@ app.directive('list', function () {
                     console.log ("Changed plan about removing list", listid);
                 });
             };
+            $scope.openNewItemModal = function () {
+                var listid = this.listid;
+                var sc = $scope.$new(true);
+                sc.listid = this.list_id;
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: "item/addItemModal.tpl.html",
+                    scope: sc,
+                    controller: "addItemModalCtrl"
+                });
+                modalInstance.result.then(function (newlist) {
+                    backend.call("/api/lists", 'addItem', {list_id: listid}, function (err, result) {
+                        $scope.$emit("itemAdded", $scope.listid);
+                    });
+                }, function (err) {
+                    console.log ("Changed plan about adding item");
+                });
+            };
             $scope.checkItem = function (item, $index) {
                 console.log("Item at index", $index, " just got checked:", item);
                 backend.call('/api/lists', 'switchCheckedItem', {item: item, list_id: $scope.listid}, function (err, res) {

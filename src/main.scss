@@ -1,8 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
 $list-card-radius: 10px;
-$cardheight: 400px;
-$cardbottomheight: 70px;
+$cardheight: 600px;
+$cardbottomheight: 100px;
+$cardwidth: 400px;
+$whitecolor: #f1f1f1;
+$primarycolor: #121797;
+
+
+html {
+    height: 100%;
+};
+body {
+    background: #30cfd0;
+    background: -webkit-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(120deg, #30cfd0 0%, #330867 100%);
+    margin: 0;
+};
 
 
 
@@ -100,20 +116,30 @@ $cardbottomheight: 70px;
 .login-help{
   font-size: 12px;
 }
+
+
+
+
+
+
+.main-container {
+    padding: 10px;
+};
 .list-card {
     border: 1px solid grey;
     border-radius: $list-card-radius;
-    background-color: #f0f0f0;
-    min-width: 300px;
-    max-width: 400px;
+    background-color: #f8f8f8;
+    width: $cardwidth;
     height: $cardheight;
     padding: 0px;
-}
+    display: block;
+    position: relative;
+};
 .list-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-}
-.list-title {
+};
+.list-header {
     text-align: center;
     font-size: 32px;
     border-radius: $list-card-radius $list-card-radius 0 0;
@@ -123,54 +149,53 @@ $cardbottomheight: 70px;
     margin: 0px auto;
     height: 50px;
     background-color: #ffffff;
-}
-.list-title .menu-button {
-    display:inline;
-    overflow: auto;
-    white-space: nowrap;
-    margin: auto 0;
-    padding-top: 0;
-    color: navy;
-    position: absolute;
-    left: 10px;
-    float: left;
 };
-.list-title .list-name {
+.list-bottom {
+    margin: 0 auto;
+    display: block;
+    height: $cardbottomheight;
+    text-align: center;
+    position: relative;
+    top: $cardheight - $cardbottomheight - 52px;
+    border-radius: 0 0 $list-card-radius $list-card-radius;
+    background: linear-gradient(transparent, grey);
+};
+.list-header .menu-button {
+    outline: 0;
+    background: white;
+    color: $primarycolor;
+    border: 0;
+    margin: 0;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 0.5em;
+    display: inline-block;
+    left: 10px;
+    top: 10px;
+};
+.menu-button:hover {
+    color: $primarycolor + 50;
+    transition: 0.2s;
+};
+.list-header .list-name {
     display: inline-block;
     position: relative;
 };
 .add-item-button {
-    background: #121797;
-    display: block;
-    color: #f1f1f1;
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
     position: absolute;
-    top: 0px;
-    // top: 60%;
-    margin: auto 0;
-};
-.list-bottom {
-    width: 100%;
-    margin: auto;
+    outline: 0;
+    background: $primarycolor;
     display: block;
-    height: $cardbottomheight;
-    padding: 10px;
-    text-align: center;
-    background-color: blue;
-    position: absolute;
-    top: $cardheight - $cardbottomheight;
-    border-radius: 0 0 $list-card-radius $list-card-radius;
-}
-html {
-    height: 100%;
+    color: $whitecolor;
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    top: 11px;
+    left: $cardwidth/2 - 25px;
+    border: none;
 };
-body {
-    background: #30cfd0;
-    background: -webkit-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(120deg, #30cfd0 0%, #330867 100%);
-    margin: 0;
+.add-item-button:hover {
+    background: $primarycolor + 50;
+    transition: 0.2s;
 };
