@@ -49,6 +49,7 @@ app.factory('user', ['$state', '$cookies', 'configService', 'backend', function 
             if (err) {
                 return cb(err);
             }
+
             // configService.setAuth({token: result.token});
             user.saveToken(result.token);
             cb(null, result.token);

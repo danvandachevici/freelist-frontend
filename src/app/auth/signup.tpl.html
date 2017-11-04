@@ -1,70 +1,12 @@
-<link rel="stylesheet" type="text/css" href="styles/login.css">
-<section class="login-section">
-    <div class="container">
-        <div class="row">
-            <h1 class="welcome text-center">Welcome to <br> Freelist</h1>
-            <div class="card card-container">
-                <h2 class='login_title text-center'>Sign up</h2>
-                <hr>
+<div class="loginmodal-container">
+    <h1>Sign up for a new account</h1><br>
+    <form ng-submit="signup()">
+        <input type="text" name="user" placeholder="E-mail" ng-model="signObj.email">
+        <input type="password" name="pass" placeholder="Password" ng-model="signObj.pass">
+        <input type="submit" name="login" class="login loginmodal-submit" value="Signup">
+    </form>
 
-                <form class="form-signin" ng-submit="signup()">
-                    <div class="input input--nao">
-                        <input class="input__field input__field--nao" type="Email" id="input-1" required="" name="name" ng-model="signupObj.email">
-                        <label class="input__label input__label--nao" for="input-1">
-                            <span class="input__label-content input__label-content--nao">Email:</span>
-                        </label>
-                        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                        </svg>
-                    </div>
-                    <div class="input input--nao">
-                        <input class="input__field input__field--nao" type="password" id="input-1" required="" name="name" ng-model="signupObj.pass">
-                        <label class="input__label input__label--nao" for="input-1">
-                            <span class="input__label-content input__label-content--nao">Password:</span>
-                        </label>
-                        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
-                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
-                        </svg>
-                    </div>
-                    <div id="remember" class="checkbox">
-                        <label>
-
-                        </label>
-                    </div>
-                    <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
-                </form><!-- /form -->
-                <div>
-                    <a ui-sref="auth-login" class="pull-right">Or go to login</a>
-                </div>
-            </div><!-- /card-container -->
-        </div>
+    <div class="login-help">
+        <a ui-sref="auth-login">Login</a> - <a href="#">Forgot Password</a>
     </div>
-</section>
-
-
-
-<!-- <div class="login-container">
-	<div class="title">
-		Sign up
-	</div>
-	<form class="form" name="signupForm" ng-submit="signup()" novalidate>
-		<div class="form-group" ng-class='{"has-error": signupForm.email.$dirty && signupForm.email.$invalid}'>
-			<input type="email" required class="form-control center-text" name="email" placeholder="Email" ng-model="signupObj.email">
-			<span class="help-block" ng-show="signupForm.email.$dirty && signupForm.email.$error.required">Required</span>
-		</div>
-
-		<div class="form-group" ng-class='{"has-error": signupForm.password.$dirty && signupForm.password.$invalid}'>
-			<input type="password" required class="form-control center-text" name="password" placeholder="Password" ng-model="signupObj.pass">
-			<span class="help-block" ng-show="signupForm.password.$dirty && signupForm.password.$error.required">Required</span>
-		</div>
-		<button class="btn btn-block btn-primary" type="submit" ng-disabled="!signupForm.$valid" ng-if="!signupLoading">Sign up</button>
-		<button class="btn btn-block btn-primary" disabled ng-if="signupLoading"><span class="fa fa-spin fa-refresh"></span></button>
-	</form>
-	<span class="help-block" ng-show="errorOccurred">{{errorOccurred}}</span>
-
-	<div class="footer">
-		<span><a ui-sref="auth-login">Login</a></span>
-		|
-		<span><a ui-sref="list-home">Home</a></span>
-	</div>
-</div> -->
+</div>
