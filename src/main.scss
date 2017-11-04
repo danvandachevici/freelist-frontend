@@ -3,15 +3,17 @@
 $list-card-radius: 10px;
 $cardheight: 600px;
 $cardbottomheight: 100px;
+$cardheaderheight: 50px;
 $cardwidth: 400px;
 $whitecolor: #f1f1f1;
 $primarycolor: #121797;
 
 
 html {
-    height: 100%;
+    min-height: 100%;
 };
 body {
+    min-height: 100%;
     background: #30cfd0;
     background: -webkit-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(120deg, #30cfd0 0%, #330867 100%); /* For Opera 11.1 to 12.0 */
@@ -111,54 +113,67 @@ body {
   display: inline-block;
   opacity: 0.6;
   transition: opacity ease 0.5s;
-} 
+};
 
 .login-help{
   font-size: 12px;
-}
-
-
-
-
-
+};
 
 .main-container {
     padding: 10px;
 };
 .list-card {
     border: 1px solid grey;
+    margin: 10px;
     border-radius: $list-card-radius;
-    background-color: #f8f8f8;
+    background-color: #f2f2f2;
     width: $cardwidth;
     height: $cardheight;
     padding: 0px;
-    display: block;
+    display: inline-block;
     position: relative;
+    transition: 0.3s;
 };
 .list-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.7);
     transition: 0.3s;
 };
 .list-header {
+    display: block;
     text-align: center;
     font-size: 32px;
     border-radius: $list-card-radius $list-card-radius 0 0;
     font-family: "Old Standard TT";
-    display: block;
     padding: 0px;
     margin: 0px auto;
-    height: 50px;
-    background-color: #ffffff;
+    height: $cardheaderheight;
+    background-color: #fafafa;
 };
 .list-bottom {
+    position: absolute;
+    // display: block;
+    width: $cardwidth;
     margin: 0 auto;
-    display: block;
     height: $cardbottomheight;
-    text-align: center;
-    position: relative;
-    top: $cardheight - $cardbottomheight - 52px;
+    top: $cardheight - $cardbottomheight;
     border-radius: 0 0 $list-card-radius $list-card-radius;
-    background: linear-gradient(transparent, grey);
+    background: -webkit-linear-gradient(rgba(white, 0), 20%, rgba(white, 1)); // For Safari 5.1 to 6.0
+    background: -o-linear-gradient(rgba(white, 0), 20%, rgba(white, 1)); //For Opera 11.1 to 12.0
+    background: -moz-linear-gradient(rgba(white, 0), 20%, rgba(white, 1)); // For Firefox 3.6 to 15
+    background: linear-gradient(rgba(white, 0), 20%, rgba(white, 1));
+};
+.add-item-button {
+    outline: 0;
+    position: relative;
+    background: $primarycolor;
+    display: block;
+    color: $whitecolor;
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+    left: $cardwidth/2 - 35px;
+    top: $cardbottomheight/2 - 35px;
+    border: none;
 };
 .list-header .menu-button {
     outline: 0;
@@ -174,6 +189,7 @@ body {
     left: 10px;
     top: 10px;
 };
+
 .menu-button:hover {
     color: $primarycolor + 50;
     transition: 0.2s;
@@ -182,20 +198,133 @@ body {
     display: inline-block;
     position: relative;
 };
-.add-item-button {
-    position: absolute;
-    outline: 0;
-    background: $primarycolor;
-    display: block;
-    color: $whitecolor;
-    height: 70px;
-    width: 70px;
-    border-radius: 35px;
-    top: 11px;
-    left: $cardwidth/2 - 25px;
-    border: none;
-};
 .add-item-button:hover {
     background: $primarycolor + 50;
     transition: 0.2s;
+};
+.ellipsis {
+    width: 85%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.greyedout {
+    text-decoration: line-through;
+    color: #b3b3b3;
+};
+
+.list-body {
+    position: relative;
+    width: 95%;
+    height: $cardheight - $cardheaderheight;
+    padding: 2px;
+    padding-bottom: $cardbottomheight + 2px;
+    margin: 0 auto;
+    overflow: auto;
+};
+.list-item {
+    position: relative;
+    display: block;
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 25px;
+    padding-top: 12px;
+    border-radius: 25px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: 2px 2px 1px #b0b0b0;
+    transition: 0.1s;
+    font-size: 20px;
+};
+.list-item:hover {
+    box-shadow: 4px 4px 2px #d5d5d5;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    float: right;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+};
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+};
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 40px;
+    background-color: #eee;
+};
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+};
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    // background-color: #2196F3;
+    background-color: #01FF70;
+};
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+};
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+};
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 10px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+};
+
+#add-new-list {
+    position: fixed;
+    display: block;
+    bottom: 50px;
+    right: 50px;
+    background-color: #30cfd0;
+    outline: 0;
+    border: none;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
 };

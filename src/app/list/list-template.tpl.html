@@ -1,89 +1,40 @@
-<div>
-    <div class="list-card">
-        <div class="list-header">
-            <button class="menu-button"><span class="fa fa-cog fa-2x"></span></button>
-            <!-- <div class="list-name">Lidl</div> -->
-            <div class="list-name">{{list.name}}</div>
-            <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
-            <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
-        </div>
+<div class="list-card">
+    <div class="list-header">
+        <button class="menu-button"><span class="fa fa-cog fa-2x"></span></button>
+        <!-- <div class="list-name">Lidl</div> -->
+        <div class="list-name">{{list.name}}</div>
+        <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
+        <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
+    </div>
 
-        <div class="list-body">
-            <item ng-repeat="item in notdonelist" item="{{item}}"></item>
-        </div>
 
-        <div class="list-bottom">
-            <button class="add-item-button" ng-click="openNewItemModal();"><span class="glyphicon glyphicon-plus"></span></button>
+
+    <!-- <div class="list-body">
+        <div class="list-group">
+            <div class="list-group-item list-group-item-action" ng-class="{greyedout: item.checked}" ng-repeat="item in items">
+                <button class="btn btn-danger"><span class="fa fa-trash"></span></button>
+                {{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong>
+                <form class="form-inline">
+                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="list-body">
+        <div class="list-item" ng-repeat="item in items">
+            <!-- <button class="btn btn-danger"><span class="fa fa-trash"></span></button> -->
+            <div class="ellipsis" ng-class="{greyedout:item.checked}">{{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong></div>
+            <label class="checkbox-container">
+                <input type="checkbox" ng-model="item.checked" ng-click="handleCheckboxCheck(item, $index)">
+                <span class="checkmark"></span>
+            </label>
         </div>
     </div>
-    <!-- <a data-toggle="modal" data-target="#addnew" role="button" title="" data-toggle="tooltip" data-placement="top" data-original-title="Back to Top" style="display: inline;">
-        <span class="glyphicon glyphicon-plus"></span>
-    </a> -->
+
+    <div class="list-bottom">
+        <button class="add-item-button" ng-click="openNewItemModal();"><span>Add</span></button>
+    </div>
 </div>
-<!--
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <div>
-                                <input type="number" id="input-1" required="" name="name" ng-model="item.qty" ng-disabled="addItemLoading">
-                                <label for="input-1">
-                                    <span>Quantity:</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <select ng-model="item.unit" ng-disabled="addItemLoading">
-                                    <option value="">Select</option>
-                                    <option ng-repeat="unit in units" value="{{unit}}">{{unit}}</option>
-                                </select>
-                                <label for="input-1">
-                                    <span>Unit</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div>
-                                <input type="text" id="input-1" required="" name="name" ng-model="item.item_id" ng-disabled="addItemLoading">
-                                <label for="input-1">
-                                    <span>Item name</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                            <button style="margin-top: 8px;float: right;" type="button" class="btn btn-primary" ng-click="addItem()" ng-disabled="addItemLoading"><i class="glyphicon glyphicon-plus"></i>Add New</button>
-                        </div>
-
-
-                    </div>
-
-                    <div>
-                        <div></div>
-                        <div>Quantity</div>
-                        <div>Unit</div>
-                        <div>Items</div>
-                        <div>Delete</div>
-                    </div>
-
-                    <div ng-repeat="item in items track by $index">
-                        <div>
-                            <div>
-                                <input type="checkbox" value="None" id="squaredTwo" name="check" ng-model="item.checked" ng-change="checkItem(item, $index);">
-                                <label for="squaredTwo"></label>
-                            </div>
-                        </div>
-                        <div >{{item.qty}}</div>
-                        <div >{{item.unit}}</div>
-                        <div >{{item.item_id}}</div>
-                        <div ng-click="removeItemFromList(item, $index);"><span class="fa fa-minus"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
--->

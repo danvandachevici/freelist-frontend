@@ -20,7 +20,6 @@ app.directive('list', function () {
 				console.log ("Check:", item, idx);
 
 				item.loading = true;
-				item.checked = !item.checked;
 				var i = 0;
 				var inserted;
 
@@ -38,7 +37,7 @@ app.directive('list', function () {
 					$scope.notdonelist = $scope.notdonelist.sort(sortByCreated);
 				}
 
-				backend.call("/api/lists", 'finishItem', {list_id: $scope.listid, item: item}, function (err, result) {
+				backend.call("/api/lists", 'switchItemChecked', {list_id: $scope.listid, item: item}, function (err, result) {
 					item.loading = false;
 					if (err) {
 						console.log ("Error, panic !");
@@ -82,41 +81,12 @@ app.directive('list', function () {
                         if (err) {
                             return;
                         }
-
                         $scope.items = orderList(items);
 	        			$scope.listLoading = false;
         			});
         		});
 			};
 
-			$scope.addItem = function () {
-                $scope.addItemLoading = true;
-                console.log("ADD item called");
-				backend.call("/api/lists", 'addItemToList', {item: $scope.item, list_id: $scope.listid}, function (err, result) {
-                    $scope.addItemLoading = false;
-                    if (err) {
-                        console.log("Something failed while calling addItemToList", err);
-                        return null;
-                    }
-					if ($scope.notdonelist) {
-						var found = 0;
-						for (var i = 0; i < $scope.notdonelist.length; i++) {
-							if ($scope.notdonelist[i].item_id === $scope.item.item_id && $scope.notdonelist[i].unit === $scope.item.unit) {
-								$scope.notdonelist[i].qty += parseInt($scope.item.qty);
-								found = 1;
-								break;
-							}
-						}
-						if (!found) {
-							var item = JSON.parse(JSON.stringify($scope.item));
-							$scope.notdonelist.unshift(item);
-						}
-					} else {
-						$scope.notdonelist = [$scope.item];
-					}
-					$scope.item = {};
-				});
-			};
 			$scope.setUnit = function (unit) {
 				$scope.item.showDropdown = false;
 				$scope.item.unit = unit;
@@ -145,17 +115,15 @@ app.directive('list', function () {
             $scope.openNewItemModal = function () {
                 var listid = this.listid;
                 var sc = $scope.$new(true);
-                sc.listid = this.list_id;
+                sc.listid = listid;
 
                 var modalInstance = $uibModal.open({
                     templateUrl: "item/addItemModal.tpl.html",
                     scope: sc,
                     controller: "addItemModalCtrl"
                 });
-                modalInstance.result.then(function (newlist) {
-                    backend.call("/api/lists", 'addItem', {list_id: listid}, function (err, result) {
-                        $scope.$emit("itemAdded", $scope.listid);
-                    });
+                modalInstance.result.then(function (newitem) {
+                    $scope.notdonelist.unshift(newitem);
                 }, function (err) {
                     console.log ("Changed plan about adding item");
                 });

@@ -37,25 +37,15 @@ angular.module( 'free-list')
         });
     };
     
-    $scope.help = {
-        settings:   {text: "User's settings",   url: "settings",    fa: "fa-cog"},
-        disclaimer: {text: "About this",        url: "disclaimer",  fa: "fa-book"},
-        logout:     {text: "Log out",           url: "logout",      fa: "fa-power-off"}
-    };
     $scope.goto = function (state) {
         $state.go(state);
     };
-    $scope.showHelp = function(item) {
-        if ($scope.help[item]) {
-            $scope.help[item].show = true;
-        }
-    };
-    $scope.hideHelp = function (item) {
-        $scope.help[item].show = false;
-    };
-    $scope.getLists();
     $scope.logout = function () {
         user.logout();
     };
+
+
+    $scope.getLists();
+    
 }])
 ;

@@ -6,29 +6,15 @@ app.controller('addItemModalCtrl', ['$scope', 'backend', '$uibModalInstance', fu
     };
     $scope.submitForm = function () {
         $scope.addItemLoading = true;
-        backend.call("/api/lists", 'addItemToList', {item: $scope.item, list_id: $scope.listid}, function (err, result) {
+        var additemObject = {item: $scope.item, list_id: $scope.listid};
+        backend.call("/api/lists", 'addItemToList', additemObject, function (err, result) {
             $scope.addItemLoading = false;
             if (err) {
                 console.log("Something failed while calling addItemToList", err);
+                $uibModalInstance.dismiss(true);
                 return null;
             }
-            /*if ($scope.notdonelist) {
-                var found = 0;
-                for (var i = 0; i < $scope.notdonelist.length; i++) {
-                    if ($scope.notdonelist[i].item_id === $scope.item.item_id && $scope.notdonelist[i].unit === $scope.item.unit) {
-                        $scope.notdonelist[i].qty += parseInt($scope.item.qty);
-                        found = 1;
-                        break;
-                    }
-                }
-                if (!found) {
-                    var item = JSON.parse(JSON.stringify($scope.item));
-                    $scope.notdonelist.unshift(item);
-                }
-            } else {
-                $scope.notdonelist = [$scope.item];
-            }*/
-            $scope.item = {};
+            $uibModalInstance.close($scope.item);
         });
     };
 }]);
