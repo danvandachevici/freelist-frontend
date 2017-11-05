@@ -1,8 +1,9 @@
 <div class="modal-header">
     <h3>Add item</h3>
 </div>
+
+<form class="form" ng-submit="submitForm()">
 <div class="modal-body">
-    <form class="form">
         <div class="form-group">
             <input class="form-control" type="text" placeholder="Item" ng-model="item.item_id"/>
         </div>
@@ -12,9 +13,9 @@
         <div class="form-group">
             <input class="form-control" type="text" placeholder="Unit" ng-model="item.unit"/>
         </div>
-    </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="submitForm()">Submit</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
     <button class="btn btn-primary" ng-click="cancel();">Cancel</button>
 </div>
+</form>

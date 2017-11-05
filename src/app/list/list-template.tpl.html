@@ -1,6 +1,12 @@
 <div class="list-card">
     <div class="list-header">
-        <button class="menu-button"><span class="fa fa-cog fa-2x"></span></button>
+        <!-- <div class="menu-buttons" ng-mouseover="showOptions=true;" ng-mouseleave="showOptions=false;" > -->
+        <div class="menu-buttons">
+            <button class="main-menu-button"><span class="fa fa-cog fa-2x"></span></button>
+            <button class="menu-button" ng-click="openDeleteListModal()"><span style="color: red" class="fa fa-trash fa-2x"></span></button>
+        </div>
+        <!-- <buttonng-if="!showOptions"><span class="fa fa-cog fa-2x"></span></button> -->
+        <!-- <div ng-if="showOptions"></div> -->
         <!-- <div class="list-name">Lidl</div> -->
         <div class="list-name">{{list.name}}</div>
         <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
@@ -24,9 +30,17 @@
     </div> -->
 
     <div class="list-body">
-        <div class="list-item" ng-repeat="item in items">
+        <div class="list-item" ng-repeat="item in notdonelist">
             <!-- <button class="btn btn-danger"><span class="fa fa-trash"></span></button> -->
             <div class="ellipsis" ng-class="{greyedout:item.checked}">{{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong></div>
+            <label class="checkbox-container">
+                <input type="checkbox" ng-model="item.checked" ng-click="handleCheckboxCheck(item, $index)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="list-item" ng-repeat="item in donelist">
+            <!-- <button class="btn btn-danger"><span class="fa fa-trash"></span></button> -->
+            <div class="ellipsis" ng-class="{greyedout:item.checked}">{{item.qty}} {{item.unit}} {{item.item_id}}</div>
             <label class="checkbox-container">
                 <input type="checkbox" ng-model="item.checked" ng-click="handleCheckboxCheck(item, $index)">
                 <span class="checkmark"></span>

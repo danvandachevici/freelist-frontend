@@ -175,25 +175,48 @@ body {
     top: $cardbottomheight/2 - 35px;
     border: none;
 };
-.list-header .menu-button {
-    outline: 0;
-    background: white;
-    color: $primarycolor;
-    border: 0;
-    margin: 0;
+.menu-buttons {
+    background: #fafafa;
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 40px;
     font-size: 0.5em;
     display: inline-block;
     left: 10px;
     top: 10px;
-};
-
-.menu-button:hover {
-    color: $primarycolor + 50;
+    overflow: hidden;
+    text-align: left;
     transition: 0.2s;
 };
+.menu-buttons:hover {
+    width: 120px;
+    transition: 0.2s;
+}
+.main-menu-button {
+    display: inline-block;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    background: white;
+    color: $primarycolor;
+    width: 30px;
+    height: 30px;
+}
+.menu-button {
+    display: inline-block;
+    position: absolute;
+    border: 0;
+    margin-left: 10px;
+    outline: 0;
+    background: white;
+    color: $primarycolor;
+    width: 30px;
+    height: 30px;
+}
+
+// .menu-button:hover {
+//     color: $primarycolor + 50;
+//     transition: 0.2s;
+// };
 .list-header .list-name {
     display: inline-block;
     position: relative;

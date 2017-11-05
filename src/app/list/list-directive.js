@@ -55,7 +55,7 @@ app.directive('list', function () {
 			};
 
             var orderList = function (list) {
-                var ret = [];
+                // var ret = [];
                 var aux = {
                     true: [],
                     false: []
@@ -69,7 +69,11 @@ app.directive('list', function () {
                 // false -> unchecked - not done
                 aux.true.sort(sortByDone);
                 aux.false.sort(sortByCreated);
-                ret = aux.false.concat(aux.true);
+                // ret = aux.false.concat(aux.true);
+                var ret = {
+                    donelist: aux.true,
+                    notdonelist: aux.false
+                };
                 return ret;
             };
 
@@ -81,7 +85,10 @@ app.directive('list', function () {
                         if (err) {
                             return;
                         }
-                        $scope.items = orderList(items);
+                        // $scope.items = orderList(items);
+                        var r = orderList(items);
+                        $scope.donelist = r.donelist;
+                        $scope.notdonelist = r.notdonelist;
 	        			$scope.listLoading = false;
         			});
         		});
@@ -98,18 +105,23 @@ app.directive('list', function () {
 			};
 
             $scope.openDeleteListModal = function () {
-                var listid = this.listid;
+                var scope = $scope.$new(true);
+                console.log("THIS:", this);
+                scope.listid = this.listid;
+                scope.listname = this.list.name;
+                var self = this;
 
                 var modalInstance = $uibModal.open({
                     templateUrl: "list/removeListModal.tpl.html",
-                    controller: "removeListModalCtrl"
+                    controller: "removeListModalCtrl",
+                    scope: scope
                 });
                 modalInstance.result.then(function (newlist) {
-                    backend.call("/api/lists", 'deleteList', {list_id: listid}, function (err, result) {
+                    backend.call("/api/lists", 'deleteList', {list_id: self.listid}, function (err, result) {
                         $scope.$emit("listRemoved", $scope.listid);
                     });
                 }, function (err) {
-                    console.log ("Changed plan about removing list", listid);
+                    console.log ("Changed plan about removing list", self.listid);
                 });
             };
             $scope.openNewItemModal = function () {

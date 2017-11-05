@@ -36,6 +36,16 @@ angular.module( 'free-list')
             console.log ("Got error");
         });
     };
+    $scope.openFeedbackModal = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: "home/feedbackModal.tpl.html",
+            controller: "feedbackModalCtrl",
+            size: 'lg'
+        });
+        modalInstance.result.then(function (newlist) {
+        }, function (err) {
+        });
+    };
     
     $scope.goto = function (state) {
         $state.go(state);

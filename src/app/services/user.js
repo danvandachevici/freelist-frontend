@@ -58,6 +58,14 @@ app.factory('user', ['$state', '$cookies', 'configService', 'backend', function 
 	user.redirectToLogin = function (){
 		$state.go("auth-login");
 	};
+    user.submitFeedback = function (params, cb) {
+        backend.call('/api/auth', 'submitFeedback', params, function(err, resp) {
+            if (err) {
+                return cb(err);
+            }
+            cb(null);
+        });
+    };
 
 	user.login_local();
 
