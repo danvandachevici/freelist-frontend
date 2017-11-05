@@ -1,76 +1,54 @@
-<span ng-if=" ! list.ready" class="list-panel not-ready">
-	<span class="fa fa-4x fa-spin fa-refresh"></span>
-</span>
-<span ng-if="list.ready" class="list-panel ready">
-	<div class="title">{{list.name}}<button class="btn btn-lg btn-link pull-right" ng-click="removeList()"><span class="fa fa-times-circle"></span></button></div>
+<div class="list-card">
+    <div class="list-header">
+        <!-- <div class="menu-buttons" ng-mouseover="showOptions=true;" ng-mouseleave="showOptions=false;" > -->
+        <div class="menu-buttons">
+            <button class="main-menu-button"><span class="fa fa-cog fa-2x"></span></button>
+            <button class="menu-button" ng-click="openDeleteListModal()"><span style="color: red" class="fa fa-trash fa-2x"></span></button>
+        </div>
+        <!-- <buttonng-if="!showOptions"><span class="fa fa-cog fa-2x"></span></button> -->
+        <!-- <div ng-if="showOptions"></div> -->
+        <!-- <div class="list-name">Lidl</div> -->
+        <div class="list-name">{{list.name}}</div>
+        <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
+        <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
+    </div>
 
-	<div class="body">
-		<div class="item-input">
-			<form class="form-inline" name="newItemForm" novalidate>
-				<div class="form-group col-xs-2" ng-class='{"has-error": newItemForm.qty.$dirty && newItemForm.qty.$invalid}'>
-					<input class="item-qty" type="number" placeholder="Qty" name="qty" ng-model="item.qty" required>
-				</div>
-				<div class="form-group unit-dropdown col-xs-2" tabindex="-1">
-					<input class="item-unit" type="text" ng-model="item.unit" placeholder="Unit" name="unit" ng-focus="item.showDropdown = true; " ng-focus-out="item.showDropdown = false" required>
-					<div class="unit-dropdown-content" ng-show="item.showDropdown">
-						<ul class="unit-list">
-							<li class="unit-list-item" ng-repeat="unit in units | filter:item.unit" ng-click="setUnit(unit)" tabindex=-1>{{unit}}</li>
-						</ul>
-						<!-- <a href ng-repeat="unit in units" ng-click="setUnit(unit)" ng-init="units[0]" tabindex=-1>{{unit}}</a> -->
-					</div>
-				</div>
-				<div class="form-group col-xs-6">
-					<input type="text" placeholder="Add new item to this list" name="item_id" ng-model="item.item_id" required/>
-				</div>
-				<button class="btn btn-primary" type="submit" ng-click="addItem()" ng-disabled="!newItemForm.$valid" ><span class="fa fa-plus"></span></button>
-			</form>
-		</div>
 
-		<div>
-			<table class="table">
-				<thead></thead>
-				<tbody>
-					<!-- <listitem ng-repeat="item in list.items" item="item"></listitem> -->
-					<tr ng-repeat="item in notdonelist" class="listitem-row">
-						<td class="clickable listitem" ng-click="handleCheckboxCheck(item, $index)">
-							<img src="assets/checkbox-checked.png" ng-if=" ! item.loading && item.checked">
-							<img src="assets/checkbox-unchecked.png" ng-if=" ! item.loading && !item.checked">
-							<span class="fa fa-2x fa-refresh fa-spin" ng-if="item.loading"></span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.item_id}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.qty}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.unit}}</span>
-						</td>
-						<td class="listitem">
-							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList($index, notdonelist)"><span class="fa fa-trash"></span></button></div>
-						</td>
-					</tr>
-					<tr ng-repeat="item in donelist" class="listitem-row">
-						<td class="clickable listitem" ng-click="handleCheckboxCheck(item, $index)">
-							<img src="assets/checkbox-checked.png" ng-if=" ! item.loading && item.checked">
-							<img src="assets/checkbox-unchecked.png" ng-if=" ! item.loading && !item.checked">
-							<span class="fa fa-2x fa-refresh fa-spin" ng-if="item.loading"></span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.item_id}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.qty}}</span>
-						</td>
-						<td class="clickable listitem" ng-class="{strikethrough: item.checked}" ng-click="handleCheckboxCheck(item, $index)">
-							<span>{{item.unit}}</span>
-						</td>
-						<td class="listitem">
-							<div><button class="btn btn-sm btn-danger" ng-click="removeItemFromList($index, donelist)"><span class="fa fa-trash"></span></button></div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</span>
+
+    <!-- <div class="list-body">
+        <div class="list-group">
+            <div class="list-group-item list-group-item-action" ng-class="{greyedout: item.checked}" ng-repeat="item in items">
+                <button class="btn btn-danger"><span class="fa fa-trash"></span></button>
+                {{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong>
+                <form class="form-inline">
+                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="list-body">
+        <div class="list-item" ng-repeat="item in notdonelist">
+            <!-- <button class="btn btn-danger"><span class="fa fa-trash"></span></button> -->
+            <div class="ellipsis" ng-class="{greyedout:item.checked}">{{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong></div>
+            <label class="checkbox-container">
+                <input type="checkbox" ng-model="item.checked" ng-click="handleCheckboxCheck(item, $index)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="list-item" ng-repeat="item in donelist">
+            <!-- <button class="btn btn-danger"><span class="fa fa-trash"></span></button> -->
+            <div class="ellipsis" ng-class="{greyedout:item.checked}">{{item.qty}} {{item.unit}} {{item.item_id}}</div>
+            <label class="checkbox-container">
+                <input type="checkbox" ng-model="item.checked" ng-click="handleCheckboxCheck(item, $index)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="list-bottom">
+        <button class="add-item-button" ng-click="openNewItemModal();"><span>Add</span></button>
+    </div>
+</div>

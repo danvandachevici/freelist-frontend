@@ -6,26 +6,20 @@ app.directive('list', function () {
 		scope: {
 			listid: "="
 		},
-		controller: ['$scope', '$timeout', 'backend', function ($scope, $timeout, backend) {
+		controller: ['$scope', '$timeout', 'backend', '$uibModal', function ($scope, $timeout, backend, $uibModal) {
 			$scope.units = ["kg", "l", "pcs", "g"];
 			$scope.donelist = [];
 			$scope.notdonelist = [];
+            $scope.items = [];
 			$scope.checked = {};
+            $scope.list = {};
 			var i = 0;
-
-
-			$scope.item = {
-				qty: "",
-				name: "",
-				unit: ""
-			};
 
 			$scope.handleCheckboxCheck = function (item, idx) {
 
 				console.log ("Check:", item, idx);
 
 				item.loading = true;
-				item.checked = !item.checked;
 				var i = 0;
 				var inserted;
 
@@ -43,7 +37,7 @@ app.directive('list', function () {
 					$scope.notdonelist = $scope.notdonelist.sort(sortByCreated);
 				}
 
-				backend.postAuth("/api/lists/finishItem", {list_id: $scope.listid, item: item}, function (err, result) {
+				backend.call("/api/lists", 'switchItemChecked', {list_id: $scope.listid, item: item}, function (err, result) {
 					item.loading = false;
 					if (err) {
 						console.log ("Error, panic !");
@@ -60,66 +54,102 @@ app.directive('list', function () {
 				return a.doneTs - b.doneTs;
 			};
 
-			var updateList = function (id) {
-        		backend.postAuth("/api/lists/getListDetails", {list_id: id}, function (err, result) {
+            var orderList = function (list) {
+                // var ret = [];
+                var aux = {
+                    true: [],
+                    false: []
+                };
+                var tmp = [];
+                list.map(function (item) {
+                    aux[item.checked].push(item);
+                });
+
+                // true -> checked - done
+                // false -> unchecked - not done
+                aux.true.sort(sortByDone);
+                aux.false.sort(sortByCreated);
+                // ret = aux.false.concat(aux.true);
+                var ret = {
+                    donelist: aux.true,
+                    notdonelist: aux.false
+                };
+                return ret;
+            };
+
+			var getList = function (id) {
+                $scope.listLoading = true;
+        		backend.call("/api/lists", 'getListDetails', {list_id: id}, function (err, result) {
         			$scope.list.name = result.name;
-        			var donelist = [];
-        			var notdonelist = [];
-        			backend.postAuth("/api/lists/listItems", {list_id: id}, function (err, result) {
-        				for ( i = 0; i < result.length; i++) {
-        					if (result[i].checked) {
-        						donelist.push(result[i]);
-        					} else {
-        						notdonelist.push(result[i]);
-        					}
-        				}
-        				$scope.notdonelist = notdonelist.sort(sortByCreated);
-        				$scope.donelist = donelist.sort(sortByDone);
-	        			$scope.list.ready = true;
+        			backend.call("/api/lists", 'listItems', {list_id: id}, function (err, items) {
+                        if (err) {
+                            return;
+                        }
+                        // $scope.items = orderList(items);
+                        var r = orderList(items);
+                        $scope.donelist = r.donelist;
+                        $scope.notdonelist = r.notdonelist;
+	        			$scope.listLoading = false;
         			});
         		});
 			};
 
-			$scope.removeList = function () {
-				backend.postAuth("/api/lists/deleteList", {list_id: $scope.listid}, function (err, result) {
-					$scope.$emit("listRemoved", $scope.listid);
-				});
-			};
-			$scope.addItem = function () {
-				backend.postAuth("/api/lists/addItemToList", {item: $scope.item, list_id: $scope.listid}, function (err, result) {
-					if ($scope.notdonelist) {
-						var found = 0;
-						for (var i = 0; i < $scope.notdonelist.length; i++) {
-							if ($scope.notdonelist[i].item_id === $scope.item.item_id && $scope.notdonelist[i].unit === $scope.item.unit) {
-								$scope.notdonelist[i].qty += parseInt($scope.item.qty);
-								found = 1;
-								break;
-							}
-						}
-						if (!found) {
-							var newitem = JSON.parse(JSON.stringify($scope.item));
-							$scope.notdonelist.unshift(newitem);
-						}
-					} else {
-						$scope.notdonelist = [$scope.item];
-					}
-					$scope.item = {};
-				});
-			};
 			$scope.setUnit = function (unit) {
 				$scope.item.showDropdown = false;
 				$scope.item.unit = unit;
 			};
-			$scope.removeItemFromList = function (idx, list) {
-				var list_id = $scope.listid;
-				var item = list[idx];
-				backend.postAuth("/api/lists/removeItem", {item: item, list_id: $scope.listid}, function (err, result) {
-					list.splice(idx, 1);
+			$scope.removeItemFromList = function (item, idx) {
+				backend.call("/api/lists", 'removeItem', {item: item, list_id: $scope.listid}, function (err, result) {
+					$scope.items.splice(idx, 1);
 				});
 			};
 
-			$scope.list = {ready: false};
-			updateList($scope.listid);
+            $scope.openDeleteListModal = function () {
+                var scope = $scope.$new(true);
+                console.log("THIS:", this);
+                scope.listid = this.listid;
+                scope.listname = this.list.name;
+                var self = this;
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: "list/removeListModal.tpl.html",
+                    controller: "removeListModalCtrl",
+                    scope: scope
+                });
+                modalInstance.result.then(function (newlist) {
+                    backend.call("/api/lists", 'deleteList', {list_id: self.listid}, function (err, result) {
+                        $scope.$emit("listRemoved", $scope.listid);
+                    });
+                }, function (err) {
+                    console.log ("Changed plan about removing list", self.listid);
+                });
+            };
+            $scope.openNewItemModal = function () {
+                var listid = this.listid;
+                var sc = $scope.$new(true);
+                sc.listid = listid;
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: "item/addItemModal.tpl.html",
+                    scope: sc,
+                    controller: "addItemModalCtrl"
+                });
+                modalInstance.result.then(function (newitem) {
+                    $scope.notdonelist.unshift(newitem);
+                }, function (err) {
+                    console.log ("Changed plan about adding item");
+                });
+            };
+            $scope.checkItem = function (item, $index) {
+                console.log("Item at index", $index, " just got checked:", item);
+                backend.call('/api/lists', 'switchCheckedItem', {item: item, list_id: $scope.listid}, function (err, res) {
+                    $scope.items = orderList($scope.items);
+                });
+                console.log("Item checked");
+            };
+
+			// $scope.list_loading = {ready: false};
+			getList($scope.listid);
 		}]
 	};
 });

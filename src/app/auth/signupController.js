@@ -13,20 +13,25 @@ app.config(['$stateProvider', function ( $stateProvider ) {
     });
 }]);
 
-app.controller("SignupCtrl", ['$scope', '$state', 'user', function ($scope, $state, user) {
-	$scope.signupObj = {};
-	$scope.signupLoading = false;
-	$scope.errorOccurred = null;
+app.controller("SignupCtrl", ['$scope', '$state', '$uibModal', 'user', 'configService', function ($scope, $state, $uibModal, user, configService) {
+    $scope.signObj = {};
+    $scope.loginLoading = false;
+    $scope.errorOccurred = "";
 
-	$scope.signup = function () {
-		$scope.signupLoading = true;
-		user.signup({email: $scope.signupObj.email, pass: $scope.signupObj.pass}, function (err, res) {
-			$scope.signupLoading = false;
-			if (err) {
-				$scope.errorOccurred = err;
-			} else {
-				$state.go('list-home');
-			}
-		});
-	};
+    $scope.signup = function () {
+        $scope.loginLoading = true;
+        user.signup($scope.signObj, function (err, res) {
+            $scope.loginLoading = false;
+            if (err) {
+                if (err.status === 403) {
+                    $scope.errorOccurred = 'Wrong login';
+                } else {
+                    $scope.errorOccurred = err.msg;
+                }
+            } else {
+                var ret = configService.getReturnState();
+                $state.go(ret.name, ret.params);
+            }
+        });
+    };
 }]);

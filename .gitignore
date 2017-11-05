@@ -4,6 +4,7 @@ CHANGELOG.md
 README.md
 changelog.tpl
 debug/
+release/
 karma/
 release/
 module.prefix

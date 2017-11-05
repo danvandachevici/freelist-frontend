@@ -1,7 +1,7 @@
 angular.module( 'free-list')
 
 .config(['$stateProvider', function ( $stateProvider ) {
-    $stateProvider.state( 'list-home', {
+    $stateProvider.state( 'home', {
         url: '/',
         views: {
             mainview: {
@@ -13,39 +13,49 @@ angular.module( 'free-list')
     });
 }])
 
-.controller( 'HomeCtrl', ['$scope', '$state', '$timeout', "backend", function HomeController( $scope, $state, $timeout, backend ) {
+.controller( 'HomeCtrl', ['$scope', '$state', '$timeout', 'user', "backend", '$uibModal', function HomeController( $scope, $state, $timeout, user, backend, $uibModal ) {
     $scope.$on("listRemoved", function(event, listid){
         var index = $scope.listarr.indexOf(listid);
         $scope.listarr.splice(index, 1);
     });
     $scope.getLists = function () {
-        backend.postAuth('/api/lists/getUserLists', {}, function (err, res) {
+        backend.call('/api/lists', 'getUserLists', {}, function (err, res) {
             $scope.listarr = res;
         });
     };
-    $scope.createList = function () {
-        var listname = $scope.createListInput;
-        $scope.createListInput = "";
-        backend.postAuth("/api/lists/createList", {list_name: listname}, function (err, result) {
-            $scope.listarr.unshift(result.list_id);
+    $scope.openCreateListModal = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: "list/newlistModal.tpl.html",
+            controller: "newlistModalCtrl"
+        });
+        modalInstance.result.then(function (newlist) {
+            console.log ("Got newlist:", newlist);
+            var l = newlist.listId;
+            $scope.listarr.unshift(l);
+        }, function (err) {
+            console.log ("Got error");
         });
     };
-    $scope.help = {
-        settings:   {text: "User's settings",   url: "settings",    fa: "fa-cog"},
-        disclaimer: {text: "About this",        url: "disclaimer",  fa: "fa-book"},
-        logout:     {text: "Log out",           url: "logout",      fa: "fa-power-off"}
+    $scope.openFeedbackModal = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: "home/feedbackModal.tpl.html",
+            controller: "feedbackModalCtrl",
+            size: 'lg'
+        });
+        modalInstance.result.then(function (newlist) {
+        }, function (err) {
+        });
     };
+    
     $scope.goto = function (state) {
         $state.go(state);
     };
-    $scope.showHelp = function(item) {
-        if ($scope.help[item]) {
-            $scope.help[item].show = true;
-        }
+    $scope.logout = function () {
+        user.logout();
     };
-    $scope.hideHelp = function (item) {
-        $scope.help[item].show = false;
-    };
+
+
     $scope.getLists();
+    
 }])
 ;

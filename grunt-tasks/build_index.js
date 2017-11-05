@@ -7,7 +7,8 @@ module.exports = {
 		'<%= app_files.js %>',
 		'<%= html2js.debug.dest %>',
 		'<%= vendor_files.css %>',
-		'<%= sass.debug.dest %>'
+		'<%= sass.debug.dest %>',
+        'debug/pub/styles/style.css'
 		]
 	}/*,
 

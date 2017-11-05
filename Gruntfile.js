@@ -27,7 +27,6 @@ module.exports = function ( grunt ) {
 
 	var taskConfig = {
 		pkg: grunt.file.readJSON("package.json"),
-
 		clean: tasks.clean,
 		html2js: tasks.html2js,
 		copy: tasks.copy,
@@ -52,6 +51,7 @@ module.exports = function ( grunt ) {
 		'copy:d_vendor_css',
 		"copy:d_assets",
 		'sass:debug',
+        "copy:d_app_css",
 		'build_index:debug'
 	]);
 	grunt.registerTask ('release', 'The release task', [

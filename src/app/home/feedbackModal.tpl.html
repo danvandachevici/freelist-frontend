@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h1>Feedback</h1>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Preferred Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="form.userDesiredEmailAddress">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Example textarea</label>
+            <textarea class="form-control" id="exampleTextarea" rows="5" ng-model="form.feedbackText"></textarea>
+            <small id="emailHelp" class="form-text text-muted">Please detail as much as possible the issues you encountered with our platform. We'll try our best to improve it.</small>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <span style="float: left;">Thanks for the feedback. We'll make sure our engineering team hears about it !</span>
+    <button class="btn btn-primary" ng-click="submitFeedback()">Submit</button>
+</div>

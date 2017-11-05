@@ -1,8 +1,10 @@
 module.exports = {
-	options: {
-		atBegin: true,
-		livereload: true
-	},
+    options: {
+        atBegin: true,
+        spawn: false,
+        livereload: true,
+        event: ["all"]
+    },
 	js: {
 		files: ['<%= app_files.js %>'],
 		tasks: ['jshint:debug', 'copy:d_app_js']
@@ -27,6 +29,10 @@ module.exports = {
 		files: ["<%= app_files.images %>"],
 		tasks: ['copy:d_app_images', 'copy:d_vendor_images', 'copy:d_app_fonts', 'copy:d_vendor_fonts', "copy:d_assets"]
 	},
+    css: {
+        files: ["<%= app_files.css %>"],
+        tasks: ['copy:d_app_css']
+    },
 	buildFiles: {
 		files: ["Gruntfile.js", "build.config.js", "grunt-tasks/*.js"],
 		tasks: ["debug"]

@@ -1,0 +1,22 @@
+<form ng-submit="submitNewList()">
+    <div class="modal-header modal-header-info">
+        <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()">&times;</button>
+        <h3 class="modal-title">Add New Shopping List</h3>
+    </div>
+    <div class="modal-body">
+        <div class="input-group inpb input-group-lg">
+            <div class="input input--nao">
+                    <input class="input__field input__field--nao" type="text" id="input-1" required="" name="name" ng-model="listName" ng-disabled="loading">
+                    <label class="input__label input__label--nao" for="input-1">
+                        <span class="input__label-content input__label-content--nao">Add New Shopping List</span>
+                    </label>
+                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" stroke-width="1"></path>
+                    </svg>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-block btn-success" ng-disabled="loading"><i class="glyphicon glyphicon-plus"></i>Add List</button>
+    </div>
+</form>

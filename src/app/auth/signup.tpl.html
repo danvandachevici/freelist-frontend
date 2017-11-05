@@ -1,25 +1,12 @@
-<div class="login-container">
-	<div class="title">
-		Sign up
-	</div>
-	<form class="form" name="signupForm" ng-submit="signup()" novalidate>
-		<div class="form-group" ng-class='{"has-error": signupForm.email.$dirty && signupForm.email.$invalid}'>
-			<input type="email" required class="form-control center-text" name="email" placeholder="Email" ng-model="signupObj.email">
-			<span class="help-block" ng-show="signupForm.email.$dirty && signupForm.email.$error.required">Required</span>
-		</div>
+<div class="loginmodal-container">
+    <h1>Sign up for a new account</h1><br>
+    <form ng-submit="signup()">
+        <input type="text" name="user" placeholder="E-mail" ng-model="signObj.email">
+        <input type="password" name="pass" placeholder="Password" ng-model="signObj.pass">
+        <input type="submit" name="login" class="login loginmodal-submit" value="Signup">
+    </form>
 
-		<div class="form-group" ng-class='{"has-error": signupForm.password.$dirty && signupForm.password.$invalid}'>
-			<input type="password" required class="form-control center-text" name="password" placeholder="Password" ng-model="signupObj.pass">
-			<span class="help-block" ng-show="signupForm.password.$dirty && signupForm.password.$error.required">Required</span>
-		</div>
-		<button class="btn btn-block btn-primary" type="submit" ng-disabled="!signupForm.$valid" ng-if="!signupLoading">Sign up</button>
-		<button class="btn btn-block btn-primary" disabled ng-if="signupLoading"><span class="fa fa-spin fa-refresh"></span></button>
-	</form>
-	<span class="help-block" ng-show="errorOccurred">{{errorOccurred}}</span>
-
-	<div class="footer">
-		<span><a ui-sref="auth-login">Login</a></span>
-		|
-		<span><a ui-sref="list-home">Home</a></span>
-	</div>
+    <div class="login-help">
+        <a ui-sref="auth-login">Login</a> - <a href="#">Forgot Password</a>
+    </div>
 </div>
