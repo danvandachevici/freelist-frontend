@@ -13,6 +13,7 @@ app.directive('list', function () {
             $scope.items = [];
 			$scope.checked = {};
             $scope.list = {};
+            $scope.addNewItemForm = {};
 			var i = 0;
 
 			$scope.handleCheckboxCheck = function (item, idx) {

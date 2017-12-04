@@ -32,11 +32,9 @@
     </div>
 </div>
 
-<div class="overlay" ng-show="addNewItemSwitch"></div>
-<div class="add-new-item-input-container" ng-show="addNewItemSwitch">
+<div class="overlay" ng-if="addNewItemSwitch"></div>
+<div class="add-new-item-input-container" ng-if="addNewItemSwitch">
     <form>
-        <input type="text" class="add-new-item-input" autofocus ng-model="addNewItemForm.newItem" ng-keydown="keydownEventHandler($event)" placeholder="For example: '3 kilos of potatoes' or 'milk 2 liters'">
-        <!-- <input type="text" class="add-new-item-input" autofocus ng-model="addNewItemForm.newItem" ng-keydown="keydown($event)" ng-keypress="keypress($event)" placeholder="For example: '3 kilos of potatoes' or 'milk 2 liters'"> -->
-        <!-- <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1"> -->
+        <input type="text" class="add-new-item-input" ng-model="addNewItemForm.newItem" ng-keydown="keydownEventHandler($event)" placeholder="For example: '3 kilos of potatoes' or 'milk 2 liters'" myautofocus>
     </form>
 </div>
