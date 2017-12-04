@@ -125,20 +125,7 @@ app.directive('list', function () {
                 });
             };
             $scope.openNewItemModal = function () {
-                var listid = this.listid;
-                var sc = $scope.$new(true);
-                sc.listid = listid;
-
-                var modalInstance = $uibModal.open({
-                    templateUrl: "item/addItemModal.tpl.html",
-                    scope: sc,
-                    controller: "addItemModalCtrl"
-                });
-                modalInstance.result.then(function (newitem) {
-                    $scope.notdonelist.unshift(newitem);
-                }, function (err) {
-                    console.log ("Changed plan about adding item");
-                });
+                $scope.addNewItemSwitch = true;
             };
             $scope.checkItem = function (item, $index) {
                 console.log("Item at index", $index, " just got checked:", item);
@@ -148,7 +135,59 @@ app.directive('list', function () {
                 console.log("Item checked");
             };
 
-			// $scope.list_loading = {ready: false};
+            var parseNewItem = function (str) {
+                var re1 = new RegExp(/^([0-9]+)\s*([a-z]+)\s+(.+)$/i);
+                var re2 = new RegExp(/^(.+)\s+([0-9]+)\s*([a-z]+)$/i);
+                var obj = null;
+                var matches = str.match(re1);
+                if (matches) {
+                    obj = {
+                        qty: parseInt(matches[1]),
+                        unit: matches[2],
+                        item_id: matches[3]
+                    };
+                } else {
+                    matches = str.match(re2);
+                    if (matches) {
+                        obj = {
+                            qty: parseInt(matches[2]),
+                            unit: matches[3],
+                            item_id: matches[1]
+                        };
+                    }
+                }
+                return obj;
+            };
+            $scope.keydownEventHandler = function (event) {
+                if (event.which === 13) {
+                    // return -> submit
+                    $scope.addNewItem();
+                }
+                if (event.which === 27) {
+                    // escape -> close
+                    $scope.addNewItemForm.newItem = "";
+                    $scope.addNewItemSwitch = false;
+                }
+            };
+
+            $scope.addNewItem = function () {
+                $scope.addNewItemLoading = true;
+                var item = parseNewItem($scope.addNewItemForm.newItem);
+                var additemObject = {
+                    item: item
+                };
+                additemObject.list_id = $scope.listid;
+                backend.call("/api/lists", 'addItemToList', additemObject, function (err, result) {
+                    $scope.addItemLoading = false;
+                    if (err) {
+                        console.log("Something failed while calling addItemToList", err);
+                        return null;
+                    }
+                    $scope.addNewItemForm.newItem = "";
+                    $scope.addNewItemSwitch = false;
+                    $scope.notdonelist.unshift(item);
+                });
+            };
 			getList($scope.listid);
 		}]
 	};
