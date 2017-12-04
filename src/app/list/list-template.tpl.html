@@ -5,29 +5,8 @@
             <button class="main-menu-button"><span class="fa fa-cog fa-2x"></span></button>
             <button class="menu-button" ng-click="openDeleteListModal()"><span style="color: red" class="fa fa-trash fa-2x"></span></button>
         </div>
-        <!-- <buttonng-if="!showOptions"><span class="fa fa-cog fa-2x"></span></button> -->
-        <!-- <div ng-if="showOptions"></div> -->
-        <!-- <div class="list-name">Lidl</div> -->
         <div class="list-name">{{list.name}}</div>
-        <!-- <button class="btn btn-primary pull-left" ng-click="openShareListModal()"><i class="glyphicon glyphicon-share-alt"></i>share</button> -->
-        <!-- <button class="btn btn-success pull-right" ng-click="openDeleteListModal()"><i class="glyphicon glyphicon-remove"></i></button> -->
     </div>
-
-
-
-    <!-- <div class="list-body">
-        <div class="list-group">
-            <div class="list-group-item list-group-item-action" ng-class="{greyedout: item.checked}" ng-repeat="item in items">
-                <button class="btn btn-danger"><span class="fa fa-trash"></span></button>
-                {{item.qty}} {{item.unit}} <strong>{{item.item_id}}</strong>
-                <form class="form-inline">
-                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                        
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> -->
 
     <div class="list-body">
         <div class="list-item" ng-repeat="item in notdonelist">
@@ -51,4 +30,13 @@
     <div class="list-bottom">
         <button class="add-item-button" ng-click="openNewItemModal();"><span>Add</span></button>
     </div>
+</div>
+
+<div class="overlay" ng-show="addNewItemSwitch"></div>
+<div class="add-new-item-input-container" ng-show="addNewItemSwitch">
+    <form>
+        <input type="text" class="add-new-item-input" autofocus ng-model="addNewItemForm.newItem" ng-keydown="keydownEventHandler($event)" placeholder="For example: '3 kilos of potatoes' or 'milk 2 liters'">
+        <!-- <input type="text" class="add-new-item-input" autofocus ng-model="addNewItemForm.newItem" ng-keydown="keydown($event)" ng-keypress="keypress($event)" placeholder="For example: '3 kilos of potatoes' or 'milk 2 liters'"> -->
+        <!-- <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1"> -->
+    </form>
 </div>
