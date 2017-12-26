@@ -189,6 +189,12 @@ app.directive('list', function () {
                     $scope.notdonelist.unshift(item);
                 });
             };
+            $scope.showSettings = function () {
+                $scope.showMainListMenu = !$scope.showMainListMenu;
+            };
+
+
+            $scope.showMainListMenu = false;
 			getList($scope.listid);
 		}]
 	};

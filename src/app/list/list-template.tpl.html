@@ -1,9 +1,11 @@
 <div class="list-card">
     <div class="list-header">
-        <!-- <div class="menu-buttons" ng-mouseover="showOptions=true;" ng-mouseleave="showOptions=false;" > -->
         <div class="menu-buttons">
-            <button class="main-menu-button"><span class="fa fa-cog fa-2x"></span></button>
-            <button class="menu-button" ng-click="openDeleteListModal()"><span style="color: red" class="fa fa-trash fa-2x"></span></button>
+            <button class="main-menu-button" ng-click="showSettings()"><span class="fa fa-cog fa-2x"></span></button>
+            <!-- <button class="menu-button" ng-click="openDeleteListModal()"><span style="color: red" class="fa fa-trash fa-2x"></span></button> -->
+            <div style="color: blue; z-index: 9999; display: block;" ng-if="showMainListMenu">
+                test
+            </div>
         </div>
         <div class="list-name">{{list.name}}</div>
     </div>

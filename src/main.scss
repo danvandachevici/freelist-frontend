@@ -3,7 +3,7 @@
 $list-card-radius: 10px;
 $cardheight: 600px;
 $cardbottomheight: 100px;
-$cardheaderheight: 50px;
+$cardheaderheight: 90px;
 $cardwidth: 400px;
 $whitecolor: #f1f1f1;
 $primarycolor: #121797;
@@ -142,8 +142,10 @@ body {
     display: block;
     text-align: center;
     font-size: 32px;
+    overflow: hidden;
     border-radius: $list-card-radius $list-card-radius 0 0;
     font-family: "Old Standard TT";
+    line-height: $cardheaderheight;
     padding: 0px;
     margin: 0px auto;
     height: $cardheaderheight;
@@ -178,19 +180,24 @@ body {
 .menu-buttons {
     background: #fafafa;
     position: absolute;
-    width: 40px;
     font-size: 0.5em;
     display: inline-block;
+    vertical-align: middle;
     left: 10px;
     top: 10px;
     overflow: hidden;
     text-align: left;
     transition: 0.2s;
 };
-.menu-buttons:hover {
-    width: 120px;
-    transition: 0.2s;
-}
+.list-menu-popover {
+    display: block;
+    min-width: 400px;
+    z-index: 2000;
+};
+// .menu-buttons:hover {
+//     width: 120px;
+//     transition: 0.2s;
+// }
 .main-menu-button {
     display: inline-block;
     border: 0;
