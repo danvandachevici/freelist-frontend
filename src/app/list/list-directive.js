@@ -107,7 +107,6 @@ app.directive('list', function () {
 
             $scope.openDeleteListModal = function () {
                 var scope = $scope.$new(true);
-                console.log("THIS:", this);
                 scope.listid = this.listid;
                 scope.listname = this.list.name;
                 var self = this;
@@ -189,12 +188,16 @@ app.directive('list', function () {
                     $scope.notdonelist.unshift(item);
                 });
             };
-            $scope.showSettings = function () {
-                $scope.showMainListMenu = !$scope.showMainListMenu;
+
+            $scope.deleteList = function() {
+                $scope.deleteListLoading = true;
+                var options = {
+                    list_id: $scope.listid
+                };
+                backend.call('/api/lists', 'deleteList', options, function (err, results) {
+                });
             };
 
-
-            $scope.showMainListMenu = false;
 			getList($scope.listid);
 		}]
 	};
