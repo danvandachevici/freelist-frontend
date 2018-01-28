@@ -5,9 +5,9 @@
         <div class="btn-group menu-buttons" uib-dropdown dropdown-append-to-body>
             <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle><span class="fa fa-cog"></span></button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
-                <li role="menuitem"><a href="">Share (Soon to come)</a></li>
-                <li role="menuitem"><a href="">Rename (Soon to come)</a></li>
-                <li role="menuitem"><a href="">History (soon to come)</a></li>
+                <li role="menuitem" class="disabled"><a href="">Share (Soon to come)</a></li>
+                <li role="menuitem" ng-click="openRenameModal()"><a href>Rename</a></li>
+                <li role="menuitem" class="disabled"><a href="">History (soon to come)</a></li>
                 <li class="divider"></li>
                 <li role="menuitem" ng-click="openDeleteListModal()"><a href="">Delete</a></li>
             </ul>

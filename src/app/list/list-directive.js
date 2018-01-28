@@ -124,6 +124,26 @@ app.directive('list', function () {
                     console.log ("Changed plan about removing list", self.listid);
                 });
             };
+            $scope.openRenameModal = function () {
+                var scope = $scope.$new(true);
+                scope.listid = this.listid;
+                scope.listname = this.list.name;
+                var self = this;
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: "list/renameListModal.tpl.html",
+                    controller: "renameListModalCtrl",
+                    scope: scope
+                });
+                modalInstance.result.then(function (newname) {
+                    self.list.name = newname;
+                    backend.call("/api/lists", 'changeList', {list_id: self.listid, changes: {name: newname}}, function (err, result) {
+                        $scope.$emit("listRenamed", $scope.listid);
+                    });
+                }, function (err) {
+                    console.log ("Changed plan about renaming list", self.listid);
+                });
+            };
             $scope.openNewItemModal = function () {
                 $scope.addNewItemSwitch = true;
             };
